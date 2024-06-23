@@ -24,7 +24,8 @@ const Product = ({ onCartClick }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:4000/api/v1/getMedicine');
+        // const response = await fetch('http://localhost:4000/api/v1/getMedicine');
+        const response = await fetch('https://drcare-iip8.onrender.com/api/v1/getMedicine');
         const data = await response.json();
         setProducts(data);
       } catch (error) {

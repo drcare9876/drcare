@@ -18,7 +18,8 @@ const Lead = ({ open, handleClose, formValues, handleChange }) => {
     }
 
     try {
-      const response = await fetch('http://localhost:4000/api/v1/user', {
+      // const response = await fetch('http://localhost:4000/api/v1/user', {
+        const response = await fetch('https://drcare-iip8.onrender.com/api/v1/user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

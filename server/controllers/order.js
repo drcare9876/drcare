@@ -3,12 +3,13 @@ const Order = require('../models/Order');
 const cloudinary=require( "cloudinary").v2;
 const multer=require('multer');
 const fs=require('fs');
+require('dotenv').config();
 
 //.env
 cloudinary.config({
-    cloud_name: 'dofhvhvnf',
-    api_key: '253791317489542',
-    api_secret: 'HWY572CK-2vDnDA4HUsb3W3CzrU',
+    cloud_name: process.env.cloud_name,
+    api_key: process.env.api_key,
+    api_secret: process.env.api_secret,
   });
   const upload = multer({ dest: "uploads/" });
 
