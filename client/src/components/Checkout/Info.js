@@ -56,7 +56,7 @@ function Info({ medicineData, setMedicineData }) {
     formData.append('photo', file);
 
     try {
-      const response = await fetch('http://localhost:4000/api/v1/prescription/upload', {
+      const response = await fetch('https://drcare-one.vercel.app/api/v1/prescription/upload', {
         method: 'POST',
         body: formData,
       });
