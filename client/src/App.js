@@ -7,6 +7,7 @@ import Checkout from './components/Checkout/Checkout';
 import Options from './components/Options/Options';
 import OptionHandler from './components/Options/OptionHandler';
 import BrandHandler from './components/OurBrand/BrandHandler';
+import { Analytics } from "@vercel/analytics/react"
 
 const App = () => {
   return (
@@ -19,11 +20,12 @@ const App = () => {
           <Route path="/options" element={<OptionHandler />}/>
           <Route path="/brand" element={<BrandHandler />}/>
         </Routes>
+        <Analytics />
       </BrowserRouter>
     </CartProvider>
   );
 };
 
-const Home = () => <div>Home</div>;
+// const Home = () => <div>Home</div>;
 
 export default App;
