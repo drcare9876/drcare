@@ -7,9 +7,9 @@ const itemSchema = new mongoose.Schema({
 });
 
 const orderItemSchema = new mongoose.Schema({
-  serialNo: { type: Number, required: true },
-  name: { type: String, required: true },
-  quantity: { type: Number, required: true }
+  serialNo: { type: Number },
+  name: { type: String },
+  quantity: { type: Number }
 });
 
 const orderSchema = new mongoose.Schema({

@@ -24,7 +24,6 @@ const Product = ({ onCartClick }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        // const response = await fetch('http://localhost:4000/api/v1/getMedicine');
         const response = await fetch('https://drcare-iip8.onrender.com/api/v1/getMedicine');
         const data = await response.json();
         setProducts(data);
@@ -121,13 +120,13 @@ const Product = ({ onCartClick }) => {
           </Typography>
         </Stack>
 
-        <Box sx={{ display: 'flex', gap: 2, mt: 4, mb: 2 }}>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, mt: 4, mb: 2 }}>
           <TextField
             select
             label="Alphabet"
             value={selectedAlphabet}
             onChange={(e) => setSelectedAlphabet(e.target.value)}
-            sx={{ minWidth: 120 }}
+            sx={{ minWidth: 240 }}
           >
             {alphabets.map((alphabet) => (
               <MenuItem key={alphabet} value={alphabet}>
@@ -140,7 +139,7 @@ const Product = ({ onCartClick }) => {
             label="Category"
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            sx={{ minWidth: 120 }}
+            sx={{ minWidth: 240 }}
           >
             <MenuItem value="All">All</MenuItem>
             {filteredCategories.map((category) => (
@@ -149,11 +148,13 @@ const Product = ({ onCartClick }) => {
               </MenuItem>
             ))}
           </TextField>
+        </Box>
+        <Box sx={{ mt: 2, mb: 4, width: '100%', display: 'flex', justifyContent: 'center' }}>
           <TextField
             label="Search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            sx={{ minWidth: 240 }}
+            sx={{ minWidth: '65%' }}
           />
         </Box>
 
@@ -165,6 +166,7 @@ const Product = ({ onCartClick }) => {
                 mrp={product.mrp}
                 brand={product.brand}
                 image_src={product.image}
+                description={product.description}
                 addToCart={() => handleAddToCart(product)}
               />
             </Grid>

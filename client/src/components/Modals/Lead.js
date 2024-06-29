@@ -17,9 +17,19 @@ const Lead = ({ open, handleClose, formValues, handleChange }) => {
       return;
     }
 
+    handleClose(); // Close the modal before starting the API request
+
+    Swal.fire({
+      title: 'Submitting your details...',
+      text: 'Please wait...',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+
     try {
-      // const response = await fetch('http://localhost:4000/api/v1/user', {
-        const response = await fetch('https://drcare-iip8.onrender.com/api/v1/user', {
+      const response = await fetch('https://drcare-iip8.onrender.com/api/v1/user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,7 +40,16 @@ const Lead = ({ open, handleClose, formValues, handleChange }) => {
       const data = await response.json();
 
       if (response.status === 201 || response.status === 200) {
-        window.location.href = '/product';
+        Swal.fire({
+          title: 'Success!',
+          text: 'Redirecting to Product...',
+          icon: 'success',
+          timer: 1500,
+          timerProgressBar: true,
+          didClose: () => {
+            window.location.href = '/product';
+          }
+        });
       } else {
         Swal.fire({
           icon: 'error',
@@ -67,7 +86,7 @@ const Lead = ({ open, handleClose, formValues, handleChange }) => {
           borderRadius: 2,
         }}
       >
-        <Typography variant="h6" component="h2">
+        <Typography variant="h6" component="h2" style={{color:'black'}}>
           Enter Your Details
         </Typography>
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>

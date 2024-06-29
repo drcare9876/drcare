@@ -6,7 +6,6 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Stepper from '@mui/material/Stepper';
@@ -143,6 +142,7 @@ export default function Checkout() {
             alignItems: 'start',
             pt: { xs: 2, sm: 4 },
             px: { xs: 2, sm: 10 },
+            pb: { xs: 20 }, // Add padding to avoid overlap with the footer
             gap: { xs: 4, md: 'none' },
           }}
         >
@@ -234,7 +234,10 @@ export default function Checkout() {
                   {activeStep >= 1 ? '$144.97' : '$134.98'}
                 </Typography>
               </div>
-              <InfoMobile totalPrice={activeStep >= 1 ? '$144.97' : '$134.98'} />
+              <InfoMobile 
+                medicineData={medicineData} 
+                setMedicineData={setMedicineData} 
+              />
             </CardContent>
           </Card>
           <Box
@@ -329,7 +332,7 @@ export default function Checkout() {
             </React.Fragment>
           </Box>
         </Grid>
-        <Footer />
+ 
       </Grid>
     </>
   );

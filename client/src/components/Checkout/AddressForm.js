@@ -43,7 +43,7 @@ export default function AddressForm({ formData, setFormData }) {
   };
 
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={3} sx={{ paddingBottom: 8 }}>
       <FormGrid item xs={12} md={6}>
         <FormLabel htmlFor="first-name" required>
           First name

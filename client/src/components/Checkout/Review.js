@@ -45,8 +45,8 @@ export default function Review({ formData, medicineData }) {
     };
 
     try {
-      // const response = await fetch('http://localhost:4000/api/v1/placeorder', {
-        const response = await fetch('https://drcare-iip8.onrender.com/api/v1/placeorder', {
+      const response = await fetch('http://localhost:4000/api/v1/placeorder', {
+        // const response = await fetch('https://drcare-iip8.onrender.com/api/v1/placeorder', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -114,18 +114,18 @@ export default function Review({ formData, medicineData }) {
         sx={{ my: 2 }}
       >
         <div>
-          <Typography variant="subtitle2" gutterBottom>
+          <Typography variant="subtitle4" gutterBottom>
             Shipment details
           </Typography>
-          <Typography gutterBottom>{`${firstName} ${lastName}`}</Typography>
+          <Typography color="text.secondary" gutterBottom>Name: {`${firstName} ${lastName}`}</Typography>
           <Typography color="text.secondary" gutterBottom>
-            {address1}
+            Address: {address1}
           </Typography>
           <Typography color="text.secondary" gutterBottom>
-            {city}
+            City: {city}
           </Typography>
           <Typography color="text.secondary" gutterBottom>
-            {pincode}
+            Pincode: {pincode}
           </Typography>
           <Typography color="text.secondary" gutterBottom>
             {`Mobile: ${mobile}`}

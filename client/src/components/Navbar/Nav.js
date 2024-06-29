@@ -1,19 +1,20 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../Context/CartContext';
-
-import Box from '@mui/material/Box';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
-import Divider from '@mui/material/Divider';
-import Typography from '@mui/material/Typography';
-import MenuItem from '@mui/material/MenuItem';
-import Drawer from '@mui/material/Drawer';
+import {
+  Box,
+  AppBar,
+  Toolbar,
+  Button,
+  Container,
+  Divider,
+  Typography,
+  MenuItem,
+  Drawer,
+  Badge
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import Badge from '@mui/material/Badge';
 
 const logoStyle = {
   width: '58px',
@@ -46,6 +47,10 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
 
   const handleLogoClick = () => {
     navigate('/');
+  };
+
+  const handleAboutClick = () => {
+    navigate('/about');
   };
 
   return (
@@ -101,6 +106,14 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
               />
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <MenuItem
+                  onClick={handleAboutClick}
+                  sx={{ py: '6px', px: '12px' }}
+                >
+                  <Typography variant="body2" color="text.primary">
+                    About Us
+                  </Typography>
+                </MenuItem>
+                <MenuItem
                   onClick={() => scrollToSection('features')}
                   sx={{ py: '6px', px: '12px' }}
                 >
@@ -146,7 +159,6 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
                 variant="text"
                 size="small"
                 component="a"
-                // href=""
                 target="_blank"
                 sx={{ display: 'none' }} // Hide the Sign in button
               >
@@ -156,7 +168,6 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
                 color="primary"
                 variant="contained"
                 size="small"
-                // href=""
                 component="a"
                 target="_blank"
                 sx={{ display: 'none' }} // Hide the Sign up button
@@ -194,8 +205,8 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
                       flexGrow: 1,
                     }}
                   >
-                    
                   </Box>
+                  <MenuItem onClick={handleAboutClick}>About Us</MenuItem>
                   <MenuItem onClick={() => scrollToSection('features')}>
                     Features
                   </MenuItem>
@@ -212,7 +223,6 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
                       color="primary"
                       variant="contained"
                       component="a"
-                    // href=""
                       target="_blank"
                       sx={{ width: '100%', display: 'none' }} // Hide the Sign up button
                     >
@@ -224,7 +234,6 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
                       color="primary"
                       variant="outlined"
                       component="a"
-                    // href=""
                       target="_blank"
                       sx={{ width: '100%', display: 'none' }} // Hide the Sign in button
                     >

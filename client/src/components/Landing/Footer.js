@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React,{useState} from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
@@ -7,13 +7,14 @@ import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import Swal from 'sweetalert2';
 
 import FacebookIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/X';
 
 const logoStyle = {
-  width: '140px',
+  width: '60px',
   height: 'auto',
 };
 
@@ -21,13 +22,55 @@ function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" mt={1}>
       {'Copyright © '}
-      <Link href="https://mui.com/">Sitemark&nbsp;</Link>
+      <Link href="https://drcare-one.vercel.app/">DrCare&nbsp;</Link>
       {new Date().getFullYear()}
     </Typography>
   );
 }
 
  const Footer=()=> {
+  const [mobile, setMobile] = useState('');
+  const [review, setReview] = useState('');
+
+  const handleReviewSubmit = () => {
+    fetch('http://localhost:4000/api/v1/review', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ mobile, review })
+    })
+    .then(response => {
+      if (response.ok) {
+        return response.json(); // Make sure server sends back a JSON response
+      }
+      // If server response is not OK, throw an error with the status text
+      throw new Error(`${response.status} ${response.statusText}`);
+    })
+    .then(data => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Thanks for your review!',
+        text: 'We appreciate you taking the time to give us feedback.',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Close'
+      });
+      setMobile('');
+      setReview('');
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      // Error handling for non-200 response
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+        footer: `Please try submitting again later. Error: ${error.message}`
+      });
+    });
+  };
+
+  
   return (
     <Container
       sx={{
@@ -56,37 +99,33 @@ function Copyright() {
           }}
         >
           <Box sx={{ width: { xs: '100%', sm: '60%' } }}>
-            <Box sx={{ ml: '-15px' }}>
-              <img
-                src={
-                  'https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/61f12e6faf73568658154dae_SitemarkDefault.svg'
-                }
-                style={logoStyle}
-                alt="logo of sitemark"
-              />
-            </Box>
             <Typography variant="body2" fontWeight={600} gutterBottom>
               Newsletter
             </Typography>
-            <Typography variant="body2" color="text.secondary" mb={2}>
-              Subscribe to our newsletter for weekly updates and promotions.
+            <Typography variant="body3" color="text.secondary" mb={2}>
+              Your valuable review is important for our developement
             </Typography>
-            <Stack direction="row" spacing={1} useFlexGap>
-              <TextField
-                id="outlined-basic"
-                hiddenLabel
-                size="small"
-                variant="outlined"
-                fullWidth
-                aria-label="Enter your email address"
-                placeholder="Your email address"
-                inputProps={{
-                  autoComplete: 'off',
-                  'aria-label': 'Enter your email address',
-                }}
-              />
-              <Button variant="contained" color="primary" sx={{ flexShrink: 0 }}>
-                Subscribe
+            <Stack direction="column" spacing={1} useFlexGap>
+            <TextField
+              label="Your mobile number"
+              variant="outlined"
+              fullWidth
+              value={mobile}
+              onChange={(e) => setMobile(e.target.value)}
+              style={{ marginTop: '10px' }}
+            />
+            <TextField
+              label="Give Review..."
+              variant="outlined"
+              multiline
+              rows={4}
+              fullWidth
+              value={review}
+              onChange={(e) => setReview(e.target.value)}
+              style={{ marginTop: '10px' }}
+            />
+              <Button variant="contained" color="primary" sx={{ flexShrink: 0 }}  onClick={handleReviewSubmit}>
+              Submit Review
               </Button>
             </Stack>
           </Box>

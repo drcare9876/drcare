@@ -13,20 +13,21 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import Swal from 'sweetalert2';
 import { useCart } from '../Context/CartContext';
 
 function Info({ medicineData, setMedicineData }) {
   const { cart } = useCart();
 
+  const [rows, setRows] = useState(medicineData.rows);
+  const [prescription, setPrescription] = useState(medicineData.prescription);
+  const [prescriptionUrl, setPrescriptionUrl] = useState(medicineData.prescriptionUrl);
+  const [noPrescription, setNoPrescription] = useState(medicineData.noPrescription);
+  
   const totalPrice = cart.reduce(
     (total, item) => total + parseFloat(item.mrp.replace('₹', '')) * item.quantity,
     0
   ).toFixed(2);
-
-  const [rows, setRows] = useState([]);
-  const [prescription, setPrescription] = useState(medicineData.prescription);
-  const [prescriptionUrl, setPrescriptionUrl] = useState(medicineData.prescriptionUrl);
-  const [noPrescription, setNoPrescription] = useState(medicineData.noPrescription);
 
   const handleAddRow = () => {
     const newRows = [...rows, { serialNo: '', name: '', quantity: 1 }];
@@ -48,6 +49,33 @@ function Info({ medicineData, setMedicineData }) {
     setMedicineData({ ...medicineData, rows: newRows });
   };
 
+  // const handleFileChange = async (event) => {
+  //   const file = event.target.files[0];
+  //   if (!file) return;
+
+  //   const formData = new FormData();
+  //   formData.append('photo', file);
+
+  //   try {
+  //     // const response = await fetch('https://drcare-one.vercel.app/api/v1/prescription/upload', {
+  //       const response = await fetch('http://localhost:4000/api/v1/prescription/upload', {
+  //       method: 'POST',
+  //       body: formData,
+  //     });
+
+  //     if (response.ok) {
+  //       const photoUrl = await response.json();
+  //       setPrescriptionUrl(photoUrl);
+  //       setPrescription(file); // Save the file info
+  //       setMedicineData({ ...medicineData, prescriptionUrl: photoUrl, prescription: file });
+  //     } else {
+  //       console.error('Failed to upload the prescription');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error uploading the prescription:', error);
+  //   }
+  // };
+
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
     if (!file) return;
@@ -55,24 +83,49 @@ function Info({ medicineData, setMedicineData }) {
     const formData = new FormData();
     formData.append('photo', file);
 
+    Swal.fire({
+      title: 'Uploading Prescription...',
+      text: 'Please wait...',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+
     try {
-      const response = await fetch('https://drcare-one.vercel.app/api/v1/prescription/upload', {
+      const response = await fetch('http://localhost:4000/api/v1/prescription/upload', {
         method: 'POST',
         body: formData,
       });
 
       if (response.ok) {
         const photoUrl = await response.json();
-        setPrescriptionUrl(photoUrl);
-        setPrescription(file); // Save the file info
-        setMedicineData({ ...medicineData, prescriptionUrl: photoUrl, prescription: file });
+              setPrescriptionUrl(photoUrl);
+              setPrescription(file);  
+              setMedicineData({ ...medicineData, prescriptionUrl: photoUrl, prescription: file });
+        Swal.fire({
+          icon: 'success',
+          title: 'Uploaded Successfully!',
+          showConfirmButton: false,
+          timer: 1000, 
+          timerProgressBar: true
+        });
       } else {
-        console.error('Failed to upload the prescription');
+        Swal.fire({
+          icon: 'error',
+          title: 'Failed to upload the prescription',
+        });
       }
     } catch (error) {
-      console.error('Error uploading the prescription:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error uploading the prescription',
+        text: 'Please try again.',
+      });
     }
-  };
+};
+
+
 
   const handleToggleNoPrescription = (event) => {
     const newNoPrescription = event.target.checked;
@@ -233,12 +286,13 @@ Info.propTypes = {
         name: PropTypes.string,
         quantity: PropTypes.number,
       })
-    ).isRequired,
+    ),
     prescription: PropTypes.object,
     prescriptionUrl: PropTypes.string,
     noPrescription: PropTypes.bool,
   }).isRequired,
   setMedicineData: PropTypes.func.isRequired,
+  totalPrice: PropTypes.string.isRequired,
 };
 
 export default Info;
