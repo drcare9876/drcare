@@ -33,7 +33,8 @@ function Copyright() {
   const [review, setReview] = useState('');
 
   const handleReviewSubmit = () => {
-    fetch('http://localhost:4000/api/v1/review', {
+    // fetch('http://localhost:4000/api/v1/review', {
+      fetch('https://drcare-iip8.onrender.com/api/v1/review', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

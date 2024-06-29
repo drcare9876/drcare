@@ -45,8 +45,8 @@ export default function Review({ formData, medicineData }) {
     };
 
     try {
-      const response = await fetch('http://localhost:4000/api/v1/placeorder', {
-        // const response = await fetch('https://drcare-iip8.onrender.com/api/v1/placeorder', {
+      // const response = await fetch('http://localhost:4000/api/v1/placeorder', {
+        const response = await fetch('https://drcare-iip8.onrender.com/api/v1/placeorder', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
