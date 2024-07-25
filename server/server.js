@@ -28,12 +28,14 @@ const medicineRoute = require('./routes/medicine');
 const userRoute = require('./routes/user');
 const orderRoutes = require('./routes/order');
 const reviewRoutes=require('./routes/review');
+const authRoutes=require('./routes/auth');
 
 // Use the routes
 app.use('/api/v1', medicineRoute);
 app.use('/api/v1', userRoute);
 app.use('/api/v1', orderRoutes);
 app.use('/api/v1',reviewRoutes);
+app.use('/api/v1',authRoutes);;
 
 app.get('/', (req, res) => {
   res.send('Hello World!');

@@ -8,4 +8,6 @@ router.get('/getMedicine', medicineController.getMedicines);
 // Define a POST route to add a new medicine
 router.post('/addMedicine', medicineController.addMedicine);
 
+router.get('/equal-mrp-market-rate', medicineController.getMedicinesWithEqualMrpAndMarketRate);
+
 module.exports = router;

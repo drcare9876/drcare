@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { alpha, Box, Button, Container, Stack, Typography } from '@mui/material';
 import Lead from '../Modals/Lead';
 import Slider1 from '../Card/Slider1';
+import Slider2 from '../Card/Slider2';
 import Header from './Header';
 import Carousel from 'react-material-ui-carousel';
 import { Paper } from '@mui/material';
@@ -51,10 +52,16 @@ export default function Hero() {
       >
         {dummyImages.map((item, i) => (
           <Paper key={i}>
-            <img src={item.src} alt={item.alt} style={{ width: '100%' }} />
+            <img src={item.src} alt={item.alt} style={{ width: '100%',height:'auto' }} />
           </Paper>
         ))}
       </Carousel>
+
+
+    
+      <Container>
+      <Slider2/>
+      </Container>
 
       <Container
         sx={{
@@ -71,7 +78,8 @@ export default function Hero() {
           spacing={2}
           sx={{ width: '100%', alignItems: 'center' }}
         >
-          <Slider1 />
+          {/* <Slider1 /> */}
+          <img src="https://res.cloudinary.com/dofhvhvnf/image/upload/v1719817994/Aseets/fun-man-woman-teenager-animation_540381-3820_peyk2p-removebg-preview_x1slz7.png" alt="Fun Animation" style={{ width: '100%', maxWidth: '300px' }} />
           <Stack spacing={2} sx={{ width: { xs: '100%', sm: '70%' } }}>
             <Typography
               variant="h1"

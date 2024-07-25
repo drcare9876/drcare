@@ -11,7 +11,6 @@ import DiscountRoundedIcon from '@mui/icons-material/DiscountRounded';
 import AccessTimeRoundedIcon from '@mui/icons-material/AccessTimeRounded';
 import HealthAndSafetyRoundedIcon from '@mui/icons-material/HealthAndSafetyRounded';
 import VerifiedRoundedIcon from '@mui/icons-material/VerifiedRounded';
-import { keyframes } from '@mui/system';
 
 const items = [
   {
@@ -52,12 +51,6 @@ const items = [
   },
 ];
 
-const zoomAnimation = keyframes`
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-`;
-
 export default function Highlights() {
   return (
     <Box
@@ -84,10 +77,10 @@ export default function Highlights() {
             textAlign: { sm: 'left', md: 'center' },
           }}
         >
-          <Typography component="h2" variant="h4" sx={{ animation: `${zoomAnimation} 3s ease-in-out infinite` }}>
+          <Typography component="h2" variant="h4">
             Why Choose Us
           </Typography>
-          <Typography variant="body1" sx={{ color: 'grey.400', animation: `${zoomAnimation} 3s ease-in-out infinite` }}>
+          <Typography variant="body1" sx={{ color: 'grey.400' }}>
             Discover the benefits of our medicine delivery service: fast delivery, exclusive discounts, certified quality, 24/7 service, reliable customer support, and trustworthiness.
           </Typography>
         </Box>
@@ -107,14 +100,15 @@ export default function Highlights() {
                   borderColor: 'grey.800',
                   background: 'transparent',
                   backgroundColor: 'grey.900',
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.5)', // Add grey shadow effect
                 }}
               >
-                <Box sx={{ opacity: '50%', animation: `${zoomAnimation} 3s ease-in-out infinite` }}>{item.icon}</Box>
+                <Box sx={{ opacity: '50%' }}>{item.icon}</Box>
                 <div>
-                  <Typography fontWeight="medium" gutterBottom sx={{ animation: `${zoomAnimation} 3s ease-in-out infinite` }}>
+                  <Typography fontWeight="medium" gutterBottom>
                     {item.title}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: 'grey.400', animation: `${zoomAnimation} 3s ease-in-out infinite` }}>
+                  <Typography variant="body2" sx={{ color: 'grey.400' }}>
                     {item.description}
                   </Typography>
                 </div>

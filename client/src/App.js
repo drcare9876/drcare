@@ -9,6 +9,8 @@ import OptionHandler from './components/Options/OptionHandler';
 import BrandHandler from './components/OurBrand/BrandHandler';
 import { Analytics } from "@vercel/analytics/react"
 import About from './components/About/About';
+import Signin from './components/Auth/Signin';
+import Signup from './components/Auth/SignUp';
 
 const App = () => {
   return (
@@ -21,6 +23,8 @@ const App = () => {
           <Route path="/options" element={<OptionHandler />}/>
           <Route path="/brand" element={<BrandHandler />}/>
           <Route path='/about' element={<About/>}/>
+          <Route path='/signin' element={<Signin/>}/>
+          <Route path='/signup' element={<Signup/>}/>
         </Routes>
         <Analytics />
       </BrowserRouter>

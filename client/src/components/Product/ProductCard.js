@@ -11,6 +11,22 @@ import { Avatar, Button, IconButton } from '@mui/material';
 import { red } from '@mui/material/colors';
 import InfoIcon from '@mui/icons-material/Info';
 import ProductDetailsModal from '../Modals/ProductDetailsModal';
+import { AddShoppingCart } from '@mui/icons-material';
+
+const SolidButton = styled(Button)(({ theme }) => ({
+  background: '#FF3B30',
+  border: 0,
+  borderRadius: 0,
+  boxShadow: 'none',
+  color: 'white',
+  height: 40,
+  padding: '0 20px',
+  transition: 'all 0.5s ease-in-out',
+  '&:hover': {
+    background: '#e0352b',
+    boxShadow: 'none',
+  },
+}));
 
 const GradientButton = styled(Button)(({ theme }) => ({
   background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
@@ -75,9 +91,12 @@ const ProductCard = ({ name, mrp, brand, image_src, description, addToCart }) =>
         </Typography>
       </CardContent>
       <CardActions disableSpacing sx={{ justifyContent: 'space-between', px: 2 }}>
-        <GradientButton onClick={addToCart}>
+        {/* <GradientButton onClick={addToCart}>
           Add to Cart
-        </GradientButton>
+        </GradientButton> */}
+        <SolidButton onClick={addToCart}>
+          ADD TO CART&nbsp;{`₹${discountedPrice}`} 
+        </SolidButton>
         <AnimatedIconButton onClick={handleModalOpen} color="primary" aria-label="see details">
           <InfoIcon />
         </AnimatedIconButton>

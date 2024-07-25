@@ -47,7 +47,7 @@ const ProductDetailsModal = ({ open, onClose, product }) => {
       aria-describedby="product-details-description"
     >
       <Box sx={style}>
-        <Typography id="product-details-title" variant="h6" component="h2">
+        <Typography id="product-details-title" variant="h6" component="h2" style={{color:'black'}}>
           {product.name}
         </Typography>
         <CardMedia

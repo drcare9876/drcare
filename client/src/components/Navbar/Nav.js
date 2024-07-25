@@ -53,6 +53,14 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
     navigate('/about');
   };
 
+  const handleSignInClick = () => {
+    navigate('/signin');
+  };
+
+  const handleSignUpClick = () => {
+    navigate('/signup');
+  };
+
   return (
     <div>
       <AppBar
@@ -158,9 +166,7 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
                 color="primary"
                 variant="text"
                 size="small"
-                component="a"
-                target="_blank"
-                sx={{ display: 'none' }} // Hide the Sign in button
+                onClick={handleSignInClick}
               >
                 Sign in
               </Button>
@@ -168,9 +174,7 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
                 color="primary"
                 variant="contained"
                 size="small"
-                component="a"
-                target="_blank"
-                sx={{ display: 'none' }} // Hide the Sign up button
+                onClick={handleSignUpClick}
               >
                 Sign up
               </Button>
@@ -222,9 +226,8 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
                     <Button
                       color="primary"
                       variant="contained"
-                      component="a"
-                      target="_blank"
-                      sx={{ width: '100%', display: 'none' }} // Hide the Sign up button
+                      onClick={handleSignUpClick}
+                      sx={{ width: '100%' }}
                     >
                       Sign up
                     </Button>
@@ -233,9 +236,8 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
                     <Button
                       color="primary"
                       variant="outlined"
-                      component="a"
-                      target="_blank"
-                      sx={{ width: '100%', display: 'none' }} // Hide the Sign in button
+                      onClick={handleSignInClick}
+                      sx={{ width: '100%' }}
                     >
                       Sign in
                     </Button>

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import { alpha } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -7,53 +9,69 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
+import Pagination from '@mui/material/Pagination';
 import ProductCard from './ProductCard';
 import { useCart } from '../Context/CartContext';
 
-const alphabets = ['All', 'A', 'B', 'C', 'D'];
-const pageSize = 8; // 2 rows with 4 columns each
+const alphabets = ['All', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+const pageSize = 16; // 4 rows with 4 columns each
 
 const Product = ({ onCartClick }) => {
   const { addToCart } = useCart();
   const [products, setProducts] = useState([]);
+  const [selectedTag, setSelectedTag] = useState('All');
   const [selectedAlphabet, setSelectedAlphabet] = useState('All');
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedBrand, setSelectedBrand] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
 
+  const MySwal = withReactContent(Swal);
+
   useEffect(() => {
     const fetchProducts = async () => {
+      MySwal.fire({
+        title: 'Loading...',
+        text: 'Please wait while we load the products.',
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
+
       try {
         const response = await fetch('https://drcare-iip8.onrender.com/api/v1/getMedicine');
         const data = await response.json();
         setProducts(data);
       } catch (error) {
         console.error('Error fetching products:', error);
+      } finally {
+        Swal.close();
       }
     };
     fetchProducts();
   }, []);
 
   const handleAddToCart = (product) => {
-    // Ensure mrp is handled as a string if needed
     const productWithFormattedMrp = { ...product, mrp: `₹${product.mrp}` };
     addToCart(productWithFormattedMrp);
     onCartClick();
   };
 
-  const categories = [...new Set(products.map((product) => product.tags[0]))];
+  const tags = [...new Set(products.map((product) => product.tags[0]))];
+  const brands = [...new Set(products
+    .filter((product) => selectedTag === 'All' || product.tags.includes(selectedTag))
+    .map((product) => product.brand))];
 
   const filteredProducts = products.filter((product) => {
-    const matchesAlphabet =
-      selectedAlphabet === 'All' || product.tags[0].startsWith(selectedAlphabet);
-    const matchesCategory =
-      selectedCategory === 'All' || product.tags[0] === selectedCategory;
-    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesAlphabet && matchesCategory && matchesSearch;
+    const matchesTag = selectedTag === 'All' || product.tags.includes(selectedTag);
+    const matchesAlphabet = selectedAlphabet === 'All' || product.brand.startsWith(selectedAlphabet);
+    const matchesBrand = selectedBrand === 'All' || product.brand === selectedBrand;
+    const matchesSearch = product.name && product.name.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesTag && matchesAlphabet && matchesBrand && matchesSearch;
   });
 
-  const filteredCategories = categories.filter((category) =>
-    selectedAlphabet === 'All' ? true : category.startsWith(selectedAlphabet)
+  const filteredBrands = brands.filter((brand) =>
+    selectedAlphabet === 'All' ? true : brand.startsWith(selectedAlphabet)
   );
 
   const paginatedProducts = filteredProducts.slice(
@@ -62,6 +80,10 @@ const Product = ({ onCartClick }) => {
   );
 
   const totalPages = Math.ceil(filteredProducts.length / pageSize);
+
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
+  };
 
   return (
     <Box
@@ -123,6 +145,20 @@ const Product = ({ onCartClick }) => {
         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, mt: 4, mb: 2 }}>
           <TextField
             select
+            label="Tag"
+            value={selectedTag}
+            onChange={(e) => setSelectedTag(e.target.value)}
+            sx={{ minWidth: 240 }}
+          >
+            <MenuItem value="All">All</MenuItem>
+            {tags.map((tag) => (
+              <MenuItem key={tag} value={tag}>
+                {tag}
+              </MenuItem>
+            ))}
+          </TextField>
+          <TextField
+            select
             label="Alphabet"
             value={selectedAlphabet}
             onChange={(e) => setSelectedAlphabet(e.target.value)}
@@ -136,15 +172,15 @@ const Product = ({ onCartClick }) => {
           </TextField>
           <TextField
             select
-            label="Category"
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
+            label="Brand"
+            value={selectedBrand}
+            onChange={(e) => setSelectedBrand(e.target.value)}
             sx={{ minWidth: 240 }}
           >
             <MenuItem value="All">All</MenuItem>
-            {filteredCategories.map((category) => (
-              <MenuItem key={category} value={category}>
-                {category}
+            {filteredBrands.map((brand) => (
+              <MenuItem key={brand} value={brand}>
+                {brand}
               </MenuItem>
             ))}
           </TextField>
@@ -173,25 +209,15 @@ const Product = ({ onCartClick }) => {
           ))}
         </Grid>
 
-        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentPage(index + 1)}
-              disabled={currentPage === index + 1}
-              style={{
-                margin: '0 5px',
-                padding: '10px 15px',
-                cursor: currentPage === index + 1 ? 'default' : 'pointer',
-                backgroundColor: currentPage === index + 1 ? '#1976d2' : '#f0f0f0',
-                color: currentPage === index + 1 ? '#fff' : '#000',
-                border: 'none',
-                borderRadius: '4px',
-              }}
-            >
-              {index + 1}
-            </button>
-          ))}
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mt: 4 }}>
+          <Pagination
+            count={totalPages}
+            page={currentPage}
+            onChange={handlePageChange}
+            color="primary"
+            siblingCount={1}
+            boundaryCount={1}
+          />
         </Box>
       </Container>
     </Box>

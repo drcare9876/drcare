@@ -17,6 +17,12 @@ const medicineSchema = new Schema({
     type: Number,
     required: true
   },
+  market_rate:{
+    type: Number,
+  },
+  brand:{
+    type:String,
+  },
   image: {
     type: String,
     required: true
