@@ -5,13 +5,13 @@ import {
   Box,
   AppBar,
   Toolbar,
-  Button,
   Container,
   Divider,
   Typography,
   MenuItem,
   Drawer,
-  Badge
+  Badge,
+  Button
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -46,20 +46,20 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
   };
 
   const handleLogoClick = () => {
-    navigate('/');
+    navigate('/landing');
   };
 
   const handleAboutClick = () => {
     navigate('/about');
   };
 
-  const handleSignInClick = () => {
-    navigate('/signin');
-  };
+  // const handleSignInClick = () => {
+  //   navigate('/signin');
+  // };
 
-  const handleSignUpClick = () => {
-    navigate('/signup');
-  };
+  // const handleSignUpClick = () => {
+  //   navigate('/signup');
+  // };
 
   return (
     <div>
@@ -162,7 +162,7 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
                 alignItems: 'center',
               }}
             >
-              <Button
+              {/* <Button
                 color="primary"
                 variant="text"
                 size="small"
@@ -177,7 +177,7 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
                 onClick={handleSignUpClick}
               >
                 Sign up
-              </Button>
+              </Button> */}
               <Badge badgeContent={cartCount} color="error" onClick={onCartClick}>
                 <ShoppingCartIcon sx={{ cursor: 'pointer', color: 'black' }} />
               </Badge>
@@ -222,7 +222,7 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
                   </MenuItem>
                   <MenuItem onClick={() => scrollToSection('faq')}>FAQ</MenuItem>
                   <Divider />
-                  <MenuItem>
+                  {/* <MenuItem>
                     <Button
                       color="primary"
                       variant="contained"
@@ -241,7 +241,7 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
                     >
                       Sign in
                     </Button>
-                  </MenuItem>
+                  </MenuItem> */}
                   <MenuItem>
                     <Badge badgeContent={cartCount} color="error" onClick={onCartClick}>
                       <ShoppingCartIcon sx={{ cursor: 'pointer', color: 'black' }} />

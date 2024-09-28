@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const itemSchema = new mongoose.Schema({
   name: { type: String, required: true },
   quantity: { type: Number, required: true },
-  price: { type: Number, required: true }
+  price: { type: Number, required: true },
+  image: { type: String, required: true } // Add image field here
 });
 
 const orderItemSchema = new mongoose.Schema({
@@ -24,7 +25,7 @@ const orderSchema = new mongoose.Schema({
   altMobile: { type: String },
   email: { type: String, required: true },
   items: [itemSchema],
-  orderItems: [orderItemSchema], // Updated array for user-inputted medicines
+  orderItems: [orderItemSchema], 
   prescriptionImg: { type: String },
   applyPrescription: { type: Boolean, default: false },
   totalAmount: { type: Number, required: true }

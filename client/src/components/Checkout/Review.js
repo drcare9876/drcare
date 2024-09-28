@@ -16,6 +16,7 @@ export default function Review({ formData, medicineData }) {
 
   console.log("formdata", formData);
   console.log("data", medicineData);
+  console.log(cart);
 
   const handlePlaceOrder = async () => {
     const orderData = {
@@ -32,6 +33,7 @@ export default function Review({ formData, medicineData }) {
       items: cart.map(item => ({
         name: item.name,
         quantity: item.quantity,
+        image: item.image,
         price: parseFloat(item.mrp.replace('₹', ''))
       })),
       orderItems: medicineData.rows.map(row => ({
@@ -45,8 +47,8 @@ export default function Review({ formData, medicineData }) {
     };
 
     try {
-      // const response = await fetch('http://localhost:4000/api/v1/placeorder', {
-        const response = await fetch('https://drcare-iip8.onrender.com/api/v1/placeorder', {
+      const response = await fetch('http://localhost:4000/api/v1/placeorder', {
+        // const response = await fetch('https://drcare-iip8.onrender.com/api/v1/placeorder', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -50,6 +50,12 @@ const ProductDetailsModal = ({ open, onClose, product }) => {
         <Typography id="product-details-title" variant="h6" component="h2" style={{color:'black'}}>
           {product.name}
         </Typography>
+        <div style={{ backgroundColor: '#F3F7FB', color: '#24AEB1', borderRadius: 20, padding: 5, display: 'inline-block', }}>
+              {product.brand}
+            </div>
+            <div style={{ backgroundColor: '#F3F7FB', color: '#24AEB1', borderRadius: 20, padding: 5, display: 'inline-block' }}>
+              {product.tags}
+            </div>
         <CardMedia
           component="img"
           height="194"

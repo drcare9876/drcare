@@ -221,7 +221,7 @@ function Info({ medicineData, setMedicineData }) {
               sx={{ mr: 2, width: '20%' }}
             />
             <TextField
-              label="Name of Medicine"
+              label="Name of Product"
               variant="outlined"
               size="small"
               value={row.name}

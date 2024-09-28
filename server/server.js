@@ -29,13 +29,15 @@ const userRoute = require('./routes/user');
 const orderRoutes = require('./routes/order');
 const reviewRoutes=require('./routes/review');
 const authRoutes=require('./routes/auth');
+const canopyRoutes=require('./routes/canopy')
 
 // Use the routes
 app.use('/api/v1', medicineRoute);
 app.use('/api/v1', userRoute);
 app.use('/api/v1', orderRoutes);
 app.use('/api/v1',reviewRoutes);
-app.use('/api/v1',authRoutes);;
+app.use('/api/v1',authRoutes);
+app.use('/api/v1',canopyRoutes);
 
 app.get('/', (req, res) => {
   res.send('Hello World!');

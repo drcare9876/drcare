@@ -12,9 +12,10 @@ import MenuItem from '@mui/material/MenuItem';
 import Pagination from '@mui/material/Pagination';
 import ProductCard from './ProductCard';
 import { useCart } from '../Context/CartContext';
+import './Card.css';
 
 const alphabets = ['All', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-const pageSize = 16; // 4 rows with 4 columns each
+const pageSize = 30; // 4 rows with 4 columns each
 
 const Product = ({ onCartClick }) => {
   const { addToCart } = useCart();
@@ -24,20 +25,13 @@ const Product = ({ onCartClick }) => {
   const [selectedBrand, setSelectedBrand] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   const MySwal = withReactContent(Swal);
 
   useEffect(() => {
     const fetchProducts = async () => {
-      MySwal.fire({
-        title: 'Loading...',
-        text: 'Please wait while we load the products.',
-        allowOutsideClick: false,
-        didOpen: () => {
-          Swal.showLoading();
-        },
-      });
-
+      setLoading(true);
       try {
         const response = await fetch('https://drcare-iip8.onrender.com/api/v1/getMedicine');
         const data = await response.json();
@@ -45,7 +39,7 @@ const Product = ({ onCartClick }) => {
       } catch (error) {
         console.error('Error fetching products:', error);
       } finally {
-        Swal.close();
+        setLoading(false);
       }
     };
     fetchProducts();
@@ -142,83 +136,99 @@ const Product = ({ onCartClick }) => {
           </Typography>
         </Stack>
 
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, mt: 4, mb: 2 }}>
-          <TextField
-            select
-            label="Tag"
-            value={selectedTag}
-            onChange={(e) => setSelectedTag(e.target.value)}
-            sx={{ minWidth: 240 }}
-          >
-            <MenuItem value="All">All</MenuItem>
-            {tags.map((tag) => (
-              <MenuItem key={tag} value={tag}>
-                {tag}
-              </MenuItem>
-            ))}
-          </TextField>
-          <TextField
-            select
-            label="Alphabet"
-            value={selectedAlphabet}
-            onChange={(e) => setSelectedAlphabet(e.target.value)}
-            sx={{ minWidth: 240 }}
-          >
-            {alphabets.map((alphabet) => (
-              <MenuItem key={alphabet} value={alphabet}>
-                {alphabet}
-              </MenuItem>
-            ))}
-          </TextField>
-          <TextField
-            select
-            label="Brand"
-            value={selectedBrand}
-            onChange={(e) => setSelectedBrand(e.target.value)}
-            sx={{ minWidth: 240 }}
-          >
-            <MenuItem value="All">All</MenuItem>
-            {filteredBrands.map((brand) => (
-              <MenuItem key={brand} value={brand}>
-                {brand}
-              </MenuItem>
-            ))}
-          </TextField>
-        </Box>
-        <Box sx={{ mt: 2, mb: 4, width: '100%', display: 'flex', justifyContent: 'center' }}>
-          <TextField
-            label="Search"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            sx={{ minWidth: '65%' }}
-          />
-        </Box>
+        {loading ? (
+          <section className="loader">
+            <div className="slider" style={{ '--i': 0 }}></div>
+            <div className="slider" style={{ '--i': 1 }}></div>
+            <div className="slider" style={{ '--i': 2 }}></div>
+            <div className="slider" style={{ '--i': 3 }}></div>
+            <div className="slider" style={{ '--i': 4 }}></div>
+          </section>
+        ) : (
+          <>
+            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, mt: 4, mb: 2 }}>
+              <TextField
+                select
+                label="Tag"
+                value={selectedTag}
+                onChange={(e) => setSelectedTag(e.target.value)}
+                sx={{ minWidth: 240 }}
+              >
+                <MenuItem value="All">All</MenuItem>
+                {tags.map((tag) => (
+                  <MenuItem key={tag} value={tag}>
+                    {tag}
+                  </MenuItem>
+                ))}
+              </TextField>
+              <TextField
+                select
+                label="Alphabet"
+                value={selectedAlphabet}
+                onChange={(e) => setSelectedAlphabet(e.target.value)}
+                sx={{ minWidth: 240 }}
+              >
+                {alphabets.map((alphabet) => (
+                  <MenuItem key={alphabet} value={alphabet}>
+                    {alphabet}
+                  </MenuItem>
+                ))}
+              </TextField>
+              <TextField
+                select
+                label="Brand"
+                value={selectedBrand}
+                onChange={(e) => setSelectedBrand(e.target.value)}
+                sx={{ minWidth: 240 }}
+              >
+                <MenuItem value="All">All</MenuItem>
+                {filteredBrands.map((brand) => (
+                  <MenuItem key={brand} value={brand}>
+                    {brand}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Box>
 
-        <Grid container spacing={2} justifyContent="center">
-          {paginatedProducts.map((product, index) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
-              <ProductCard
-                name={product.name}
-                mrp={product.mrp}
-                brand={product.brand}
-                image_src={product.image}
-                description={product.description}
-                addToCart={() => handleAddToCart(product)}
+            
+            <Box sx={{ mt: 2, mb: 4, width: '100%', display: 'flex', justifyContent: 'center' }}>
+              <TextField
+                label="Search"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                sx={{ minWidth: '65%' }}
               />
-            </Grid>
-          ))}
-        </Grid>
+            </Box>
 
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mt: 4 }}>
-          <Pagination
-            count={totalPages}
-            page={currentPage}
-            onChange={handlePageChange}
-            color="primary"
-            siblingCount={1}
-            boundaryCount={1}
-          />
-        </Box>
+            <Grid container spacing={2} justifyContent="center">
+  {paginatedProducts.map((product, index) => (
+    <Grid item xs={6} sm={4} md={2.4} lg={2.4} key={index}>
+      <ProductCard
+        name={product.name}
+        mrp={product.mrp}
+        brand={product.brand}
+        image_src={product.image}
+        description={product.description}
+        tags={product.tags[0]}
+        addToCart={() => handleAddToCart(product)}
+      />
+    </Grid>
+  ))}
+</Grid>
+
+
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mt: 4 }}>
+              <Pagination
+                count={totalPages}
+                page={currentPage}
+                onChange={handlePageChange}
+                color="primary"
+                siblingCount={1}
+                boundaryCount={1}
+              />
+            </Box>
+          </>
+        )}
       </Container>
     </Box>
   );

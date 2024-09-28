@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { alpha, Box, Button, Container, Stack, Typography } from '@mui/material';
-import Lead from '../Modals/Lead';
+// import Lead from '../Modals/Lead';
 import Slider1 from '../Card/Slider1';
 import Slider2 from '../Card/Slider2';
 import Header from './Header';
 import Carousel from 'react-material-ui-carousel';
 import { Paper } from '@mui/material';
-
+ 
 const dummyImages = [
   { src: 'https://mercury.akamaized.net/i/3a7c4ca4c6278080634ddec324ca978e_263859_0.jpg', alt: 'Image 1' },
   { src: 'https://mercury.akamaized.net/i/e79da7dbff64419b203841851de70768_201575_0.jpg', alt: 'Image 2' },
@@ -14,20 +14,25 @@ const dummyImages = [
 ];
 
 export default function Hero() {
-  const [open, setOpen] = useState(false);
-  const [formValues, setFormValues] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    pincode: '',
-  });
+  // const [open, setOpen] = useState(false);
+  // const [formValues, setFormValues] = useState({
+  //   name: '',
+  //   phone: '',
+  //   email: '',
+  //   pincode: '',
+  // });
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  // const handleOpen = () => setOpen(true);
+  // const handleClose = () => setOpen(false);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormValues({ ...formValues, [name]: value });
+  // const handleChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setFormValues({ ...formValues, [name]: value });
+  // };
+
+
+  const handleRedirect = () => {
+    window.location.href = '/product';
   };
 
   return (
@@ -118,20 +123,21 @@ export default function Hero() {
               spacing={1}
               sx={{ pt: 2, width: { xs: '100%', sm: 'auto' } }}
             >
-              <Button variant="contained" color="primary" onClick={handleOpen}>
+              <Button variant="contained" color="primary" onClick={handleRedirect}>
                 Browse Products
               </Button>
+ 
             </Stack>
           </Stack>
         </Stack>
       </Container>
 
-      <Lead
+      {/* <Lead
         open={open}
         handleClose={handleClose}
         formValues={formValues}
         handleChange={handleChange}
-      />
+      /> */}
     </Box>
   );
 }

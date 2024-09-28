@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.5; color: #333;">
+    <div style="text-align: center; margin-bottom: 20px;">
+        <img src="https://res.cloudinary.com/dofhvhvnf/image/upload/v1714030910/c484560a-6c5d-437f-a68a-6008c4dc73f2-removebg-preview_idkaij.png" alt="Company Logo" style="max-width: 100px;">
+    </div>
+    <div>
+        <div style="text-align: center; margin-bottom: 20px;">
+            <h1>Order Confirmation</h1>
+            <h2>Your order ID is <strong>{{orderId}}</strong>.</h2>
+        </div>
+        <h3>Dear {{firstName}} {{lastName}},</h3>
+        <h3>Thank you for your order. </h3>
+
+        <h3>Customer Details:</h3>
+        <p><strong>Customer Email:</strong> {{email}}</p>
+        <p><strong>Invoice date:</strong> {{invoiceDate}}</p>
+        <p><strong>Payment method:</strong> Cash On Delivery</p>
+        <p><strong>Currency:</strong> INR</p>
+        <p><strong>Shipping Method:</strong> Standard Shipping</p>
+        <p><strong>Shipping address:</strong>
+        {{address}},<br>
+        {{city}}, {{state}} {{pincode}},<br>
+        {{country}}</p>
+
+        <h3>Items ordered by you:</h3>
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th style="text-align: left; border-bottom: 1px solid #ddd; padding: 8px;">Product</th>
+                    <th style="text-align: left; border-bottom: 1px solid #ddd; padding: 8px;">Image</th>
+                    <th style="text-align: left; border-bottom: 1px solid #ddd; padding: 8px;">Price</th>
+                    <th style="text-align: left; border-bottom: 1px solid #ddd; padding: 8px;">Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{items}}
+            </tbody>
+        </table>
+
+        <h3>Items placed order by you:</h3>
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th style="text-align: left; border-bottom: 1px solid #ddd; padding: 8px;">Product</th>
+                    <th style="text-align: left; border-bottom: 1px solid #ddd; padding: 8px;">Image</th>
+                    <th style="text-align: left; border-bottom: 1px solid #ddd; padding: 8px;">Price</th>
+                    <th style="text-align: left; border-bottom: 1px solid #ddd; padding: 8px;">Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{orderItems}}
+            </tbody>
+        </table>
+
+        <h3>Total Amount: Rs. {{totalAmount}}</h3>
+        <p>If you have any questions, please contact us at drcare66@gmail.com.</p>
+        <p>Thank you for shopping with us!</p>
+        <p>Best regards,<br/><b>Dr. Care Solutions</b></p>
+    </div>
+</body>
+</html>
