@@ -6,11 +6,12 @@ import Slider2 from '../Card/Slider2';
 import Header from './Header';
 import Carousel from 'react-material-ui-carousel';
 import { Paper } from '@mui/material';
- 
+import { NavLink } from 'react-router-dom';
+
 const dummyImages = [
-  { src: 'https://mercury.akamaized.net/i/3a7c4ca4c6278080634ddec324ca978e_263859_0.jpg', alt: 'Image 1' },
-  { src: 'https://mercury.akamaized.net/i/e79da7dbff64419b203841851de70768_201575_0.jpg', alt: 'Image 2' },
-  { src: 'https://mercury.akamaized.net/i/df0f88cb31b322849ba366d9a5d0ab15_232025_0.jpg', alt: 'Image 3' },
+  { src: '/image-1.jpg', alt: 'Image 1' },
+  { src: '/image-2.jpg', alt: 'Image 2' },
+  { src: '/image-3.jpg', alt: 'Image 3' },
 ];
 
 export default function Hero() {
@@ -31,10 +32,6 @@ export default function Hero() {
   // };
 
 
-  const handleRedirect = () => {
-    window.location.href = '/product';
-  };
-
   return (
     <Box
       id="hero"
@@ -47,7 +44,8 @@ export default function Hero() {
         backgroundRepeat: 'no-repeat',
       })}
     >
-<Carousel
+
+      <Carousel
         autoPlay
         animation="slide"
         indicators={false}
@@ -55,17 +53,16 @@ export default function Hero() {
         navButtonsAlwaysVisible
         sx={{ mt: 12 }}  // Add margin-top to the Carousel
       >
-        {dummyImages.map((item, i) => (
-          <Paper key={i}>
-            <img src={item.src} alt={item.alt} style={{ width: '100%',height:'auto' }} />
+        {dummyImages.map((item) => (
+          <Paper key={item.src}>
+            <img src={item.src} alt={item.alt} height={400} style={{ width: '100%', height: 'auto' }} />
           </Paper>
         ))}
+
       </Carousel>
 
-
-    
       <Container>
-      <Slider2/>
+        <Slider2 />
       </Container>
 
       <Container
@@ -123,10 +120,10 @@ export default function Hero() {
               spacing={1}
               sx={{ pt: 2, width: { xs: '100%', sm: 'auto' } }}
             >
-              <Button variant="contained" color="primary" onClick={handleRedirect}>
+              <NavLink to={'/product'} className='hover-button'>
                 Browse Products
-              </Button>
- 
+              </NavLink >
+
             </Stack>
           </Stack>
         </Stack>

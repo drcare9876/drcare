@@ -138,7 +138,7 @@ export default function Testimonials() {
           and reliable support.
         </Typography>
       </Box>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} className='overflow-hidden'>
         {userTestimonials.map((testimonial, index) => (
           <Grid
             item

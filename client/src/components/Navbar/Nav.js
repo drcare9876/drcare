@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useCart } from '../Context/CartContext';
 import {
   Box,
@@ -53,14 +53,6 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
     navigate('/about');
   };
 
-  // const handleSignInClick = () => {
-  //   navigate('/signin');
-  // };
-
-  // const handleSignUpClick = () => {
-  //   navigate('/signup');
-  // };
-
   return (
     <div>
       <AppBar
@@ -113,46 +105,27 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
                 onClick={handleLogoClick}
               />
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                <MenuItem
+                <a
                   onClick={handleAboutClick}
-                  sx={{ py: '6px', px: '12px' }}
+                  href='/about'
+                  className='py-[6px] px-[12px] hover:bg-gray-300/30'
                 >
                   <Typography variant="body2" color="text.primary">
                     About Us
                   </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection('features')}
-                  sx={{ py: '6px', px: '12px' }}
-                >
-                  <Typography variant="body2" color="text.primary">
-                    Features
-                  </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection('testimonials')}
-                  sx={{ py: '6px', px: '12px' }}
-                >
-                  <Typography variant="body2" color="text.primary">
-                    Testimonials
-                  </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection('highlights')}
-                  sx={{ py: '6px', px: '12px' }}
-                >
-                  <Typography variant="body2" color="text.primary">
-                    Highlights
-                  </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection('faq')}
-                  sx={{ py: '6px', px: '12px' }}
-                >
-                  <Typography variant="body2" color="text.primary">
-                    FAQ
-                  </Typography>
-                </MenuItem>
+                </a>
+                <a href='/landing/#testimonials' className='py-[6px] px-[12px] hover:bg-gray-300/30'><Typography variant="body2" color="text.primary">
+                  Testimonials
+                </Typography></a>
+                <a href='/landing/#features' className='py-[6px] px-[12px] hover:bg-gray-300/30'><Typography variant="body2" color="text.primary">
+                  Features
+                </Typography></a>
+                <a href='/landing/#highlights' className='py-[6px] px-[12px] hover:bg-gray-300/30'><Typography variant="body2" color="text.primary">
+                  Highlights
+                </Typography></a>
+                <a href='/landing/#faq' className='py-[6px] px-[12px] hover:bg-gray-300/30'><Typography variant="body2" color="text.primary">
+                  FAQ
+                </Typography></a>
               </Box>
             </Box>
             <Box
