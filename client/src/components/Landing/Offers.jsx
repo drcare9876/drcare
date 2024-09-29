@@ -9,14 +9,12 @@ const dummyImages = [
 ];
 const Offers = () => {
     return (
-        <section className=" w-full px-4 md:px-12 xl:px-40 my-6">
+        <section className=" w-full px-2 md:px-12 xl:px-40 my-6">
             <Carousel
                 autoPlay
                 animation="slide"
                 indicators={false}
                 interval={3000}
-                navButtonsAlwaysVisible
-                sx={{ mt: 12 }} // Add margin-top to the Carousel
             >
                 {dummyImages.map((item) => (
                     <Paper key={item.src}>
