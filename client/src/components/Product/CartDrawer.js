@@ -26,21 +26,27 @@ const CartDrawer = ({ open, onClose }) => {
           </Typography>
         </ListItem>
         {cart.map((item) => (
-          <ListItem key={item.name}>
-            <img src={item.image} alt={item.name} style={{ width: 50, height: 50, marginRight: 10 }} />
-            <ListItemText
-              primary={item.name}
-              secondary={`Price: ${item.mrp} | Quantity: ${item.quantity}`}
-            />
-            <IconButton onClick={() => handleQuantityChange(item, item.quantity + 1)}>
-              <AddIcon />
-            </IconButton>
-            <IconButton onClick={() => handleQuantityChange(item, item.quantity - 1)}>
-              <RemoveIcon />
-            </IconButton>
-            <IconButton edge="end" onClick={() => removeFromCart(item)}>
-              <CloseIcon />
-            </IconButton>
+          console.log(item),
+
+          <ListItem key={item._id} className='flex items-center justify-start gap-2 h-max'>
+            <img src={item.image} alt={item.name} className='w-12 h-auto object-cover' />
+            <div>
+
+              <ListItemText
+                primary={item.name}
+                secondary={`Price: ${item.mrp} | Quantity: ${item.quantity}`}
+              />
+              <IconButton onClick={() => handleQuantityChange(item, item.quantity + 1)}>
+                <AddIcon />
+              </IconButton>
+              <IconButton onClick={() => handleQuantityChange(item, item.quantity - 1)}>
+                <RemoveIcon />
+              </IconButton>
+              <IconButton edge="end" onClick={() => removeFromCart(item)}>
+                <CloseIcon />
+              </IconButton>
+            </div>
+
           </ListItem>
         ))}
         <ListItem>
@@ -48,7 +54,7 @@ const CartDrawer = ({ open, onClose }) => {
             Total: ₹{totalAmount}
           </Typography>
         </ListItem>
-        <ListItem>
+        <ListItem className='flex items-center justify-center gap-2 h-max w-full'>
           <Button
             variant="contained"
             color="primary"
@@ -56,6 +62,7 @@ const CartDrawer = ({ open, onClose }) => {
               onClose();
               navigate('/checkout');
             }}
+            className='w-full'
           >
             Checkout
           </Button>

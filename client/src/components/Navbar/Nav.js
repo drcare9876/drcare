@@ -46,7 +46,7 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
   };
 
   const handleLogoClick = () => {
-    navigate('/landing');
+    navigate('/');
   };
 
   const handleAboutClick = () => {
@@ -114,16 +114,16 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
                     About Us
                   </Typography>
                 </a>
-                <a href='/landing/#testimonials' className='py-[6px] px-[12px] hover:bg-gray-300/30'><Typography variant="body2" color="text.primary">
+                <a href='/#testimonials' className='py-[6px] px-[12px] hover:bg-gray-300/30'><Typography variant="body2" color="text.primary">
                   Testimonials
                 </Typography></a>
-                <a href='/landing/#features' className='py-[6px] px-[12px] hover:bg-gray-300/30'><Typography variant="body2" color="text.primary">
+                <a href='/#features' className='py-[6px] px-[12px] hover:bg-gray-300/30'><Typography variant="body2" color="text.primary">
                   Features
                 </Typography></a>
-                <a href='/landing/#highlights' className='py-[6px] px-[12px] hover:bg-gray-300/30'><Typography variant="body2" color="text.primary">
+                <a href='/#highlights' className='py-[6px] px-[12px] hover:bg-gray-300/30'><Typography variant="body2" color="text.primary">
                   Highlights
                 </Typography></a>
-                <a href='/landing/#faq' className='py-[6px] px-[12px] hover:bg-gray-300/30'><Typography variant="body2" color="text.primary">
+                <a href='/#faq' className='py-[6px] px-[12px] hover:bg-gray-300/30'><Typography variant="body2" color="text.primary">
                   FAQ
                 </Typography></a>
               </Box>

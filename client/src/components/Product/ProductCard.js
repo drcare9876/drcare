@@ -37,15 +37,15 @@ const ProductCard = ({ name, mrp, brand, image_src, description, addToCart, tags
     tags
   };
 
-    // Truncate the title to the first 50 characters
-    const truncateTitle = (title) => {
-      return title.length > 20 ? title.substring(0, 20) + '...' : title;
-    };
+  // Truncate the title to the first 50 characters
+  const truncateTitle = (title) => {
+    return title.length > 20 ? title.substring(0, 20) + '...' : title;
+  };
 
   return (
-    <Card sx={{ maxWidth: 200, height: 350 }} style={{ borderRadius: 20 }}>
+    <Card sx={{ width: 300, height: 350 }} style={{ borderRadius: 20 }}>
       <CardHeader
-         title={truncateTitle(name)}
+        title={truncateTitle(name)}
         subheader={
           <>
             {/* <div style={{ backgroundColor: '#F3F7FB', color: '#24AEB1', borderRadius: 20, padding: 5, display: 'inline-block' }}>
@@ -76,7 +76,7 @@ const ProductCard = ({ name, mrp, brand, image_src, description, addToCart, tags
       </CardContent>
       <CardActions disableSpacing sx={{ justifyContent: 'space-between', padding: '8px 16px' }}>
         <button className="cart-button" onClick={addToCart}>
-          {/* <svg
+          <svg
             className="cart-icon"
             stroke="currentColor"
             strokeWidth="1.5"
@@ -89,8 +89,8 @@ const ProductCard = ({ name, mrp, brand, image_src, description, addToCart, tags
               strokeLinejoin="round"
               strokeLinecap="round"
             ></path>
-          </svg> */}
-          <FaCartPlus style={{fontSize:'15' }}/>
+          </svg>
+          <FaCartPlus style={{ fontSize: '15' }} />
           <span>Add to cart</span>
         </button>
         <AnimatedIconButton onClick={handleModalOpen} color="primary" aria-label="see details">

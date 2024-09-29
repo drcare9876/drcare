@@ -20,8 +20,8 @@ const App = () => {
     <CartProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<AuthPage />} />
-          <Route path="/landing" element={<Landing />} />
+          <Route path="/auth" element={<AuthPage />} />
+          <Route path="/" element={<Landing />} />
           <Route path="/product" element={<ProductHandler />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/options" element={<OptionHandler />} />

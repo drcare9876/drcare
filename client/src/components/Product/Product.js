@@ -10,7 +10,7 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Pagination from '@mui/material/Pagination';
-import ProductCard from './ProductCard';
+import { ProductCard } from './ProductCard.jsx';
 import { useCart } from '../Context/CartContext';
 import './Card.css';
 
@@ -190,7 +190,7 @@ const Product = ({ onCartClick }) => {
               </TextField>
             </Box>
 
-            
+
             <Box sx={{ mt: 2, mb: 4, width: '100%', display: 'flex', justifyContent: 'center' }}>
               <TextField
                 label="Search"
@@ -200,21 +200,24 @@ const Product = ({ onCartClick }) => {
               />
             </Box>
 
-            <Grid container spacing={2} justifyContent="center">
-  {paginatedProducts.map((product, index) => (
-    <Grid item xs={6} sm={4} md={2.4} lg={2.4} key={index}>
-      <ProductCard
-        name={product.name}
-        mrp={product.mrp}
-        brand={product.brand}
-        image_src={product.image}
-        description={product.description}
-        tags={product.tags[0]}
-        addToCart={() => handleAddToCart(product)}
-      />
-    </Grid>
-  ))}
-</Grid>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
+
+              {paginatedProducts.map((product) => (
+
+                // <Grid item xs={6} sm={4} md={2.4} lg={4} key={product.image}>
+                //   <ProductCard
+                //     name={product.name}
+                //     mrp={product.mrp}
+                //     brand={product.brand}
+                //     image_src={product.image}
+                //     description={product.description}
+                //     tags={product.tags[0]}
+                //     addToCart={() => handleAddToCart(product)}
+                //   />
+                // </Grid>
+                <ProductCard product={product} key={product._id} handleAddToCart={() => handleAddToCart(product)} />
+              ))}
+            </div>
 
 
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mt: 4 }}>
