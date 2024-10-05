@@ -22,14 +22,10 @@ import Review from './Review';
 import Footer from '../Landing/Footer';
 import { useCart } from '../Context/CartContext';
 
-const steps = ['Shipping address', 'Review your order'];
+import { toast, ToastContainer,Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
 
-const logoStyle = {
-  width: '60px',
-  height: '56px',
-  marginLeft: '4px',
-  marginRight: '-8px',
-};
+const steps = ['Shipping address', 'Review your order'];
 
 function getStepContent(step, formData, medicineData, setMedicineData) {
   switch (step) {
@@ -64,7 +60,40 @@ export default function Checkout() {
     noPrescription: false,
   });
 
+  // Function to check if all required fields are filled and notify specifically
+  const validateForm = () => {
+    const { firstName, lastName, address1, city, pincode, mobile } = formData;
+    const missingFields = [];
+
+    if (!firstName) missingFields.push('First Name');
+    if (!lastName) missingFields.push('Last Name');
+    if (!address1) missingFields.push('Address Line 1');
+    if (!city) missingFields.push('City');
+    if (!pincode) missingFields.push('Pincode');
+    if (!mobile) missingFields.push('Mobile Number');
+
+    if (missingFields.length > 0) {
+      toast.success(`Please fill the following fields: ${missingFields.join(', ')}`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+      return false;
+    }
+
+    return true;
+  };
+
   const handleNext = () => {
+    if (activeStep === 0 && !validateForm()) {
+      return; // Stop the flow if validation fails
+    }
     setActiveStep(activeStep + 1);
   };
 
@@ -74,7 +103,7 @@ export default function Checkout() {
 
   return (
     <>
-      <CssBaseline />
+      <ToastContainer /> {/* This will display the toast */}
       <Grid container sx={{ height: { xs: '100%', sm: '100dvh' } }}>
         <Grid
           item
@@ -105,14 +134,13 @@ export default function Checkout() {
               component="a"
               href="/product"
               sx={{ ml: '-8px' }}
+              style={{ color: '#1e6460' }}
             >
               Back to
               <img
-                src={
-                  'https://res.cloudinary.com/dofhvhvnf/image/upload/v1714030910/c484560a-6c5d-437f-a68a-6008c4dc73f2-removebg-preview_idkaij.png'
-                }
-                style={logoStyle}
-                alt="Sitemark's logo"
+                src={'https://res.cloudinary.com/dofhvhvnf/image/upload/v1727879112/Aseets/drlogo_bwqlsn.png'}
+                alt="Dr. Care"
+                style={{ width: '40px', height: '40px', marginLeft: '4px', marginRight: '-8px' }}
               />
             </Button>
           </Box>
@@ -171,11 +199,9 @@ export default function Checkout() {
               >
                 Back to
                 <img
-                  src={
-                    'https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/61f12e6faf73568658154dae_SitemarkDefault.svg'
-                  }
-                  style={logoStyle}
+                  src={'https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/61f12e6faf73568658154dae_SitemarkDefault.svg'}
                   alt="Sitemark's logo"
+                  style={{ width: '40px', height: '40px', marginLeft: '4px', marginRight: '-8px' }}
                 />
               </Button>
             </Box>
@@ -205,41 +231,12 @@ export default function Checkout() {
                     }}
                     key={label}
                   >
-                    <StepLabel>{label}</StepLabel>
+                    <StepLabel style={{ color: '#1e6460' }}>{label}</StepLabel>
                   </Step>
                 ))}
               </Stepper>
             </Box>
           </Box>
-          <Card
-            sx={{
-              display: { xs: 'flex', md: 'none' },
-              width: '100%',
-            }}
-          >
-            <CardContent
-              sx={{
-                display: 'flex',
-                width: '100%',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                ':last-child': { pb: 2 },
-              }}
-            >
-              <div>
-                <Typography variant="subtitle2" gutterBottom>
-                  Selected products
-                </Typography>
-                <Typography variant="body1">
-                  {activeStep >= 1 ? '$144.97' : '$134.98'}
-                </Typography>
-              </div>
-              <InfoMobile 
-                medicineData={medicineData} 
-                setMedicineData={setMedicineData} 
-              />
-            </CardContent>
-          </Card>
           <Box
             sx={{
               display: 'flex',
@@ -251,29 +248,6 @@ export default function Checkout() {
               gap: { xs: 5, md: 'none' },
             }}
           >
-            <Stepper
-              id="mobile-stepper"
-              activeStep={activeStep}
-              alternativeLabel
-              sx={{ display: { sm: 'flex', md: 'none' } }}
-            >
-              {steps.map((label) => (
-                <Step
-                  sx={{
-                    ':first-child': { pl: 0 },
-                    ':last-child': { pr: 0 },
-                    '& .MuiStepConnector-root': { top: { xs: 6, sm: 12 } },
-                  }}
-                  key={label}
-                >
-                  <StepLabel
-                    sx={{ '.MuiStepLabel-labelContainer': { maxWidth: '70px' } }}
-                  >
-                    {label}
-                  </StepLabel>
-                </Step>
-              ))}
-            </Stepper>
             <React.Fragment>
               {getStepContent(activeStep, { ...formData, setFormData }, medicineData, setMedicineData)}
               <Box
@@ -297,6 +271,7 @@ export default function Checkout() {
                     sx={{
                       display: { xs: 'none', sm: 'flex' },
                     }}
+                    style={{ color: '#1e6460' }}
                   >
                     Previous
                   </Button>
@@ -311,6 +286,7 @@ export default function Checkout() {
                     sx={{
                       display: { xs: 'flex', sm: 'none' },
                     }}
+                    style={{ backgroundColor: '#1e6460' }}
                   >
                     Previous
                   </Button>
@@ -324,6 +300,7 @@ export default function Checkout() {
                     sx={{
                       width: { xs: '100%', sm: 'fit-content' },
                     }}
+                    style={{ backgroundColor: '#1e6460' }}
                   >
                     Next
                   </Button>
@@ -332,7 +309,6 @@ export default function Checkout() {
             </React.Fragment>
           </Box>
         </Grid>
- 
       </Grid>
     </>
   );

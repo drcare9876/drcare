@@ -64,10 +64,10 @@ const Product = ({ onCartClick }) => {
     return matchesTag && matchesAlphabet && matchesBrand && matchesSearch;
   });
 
-  const filteredBrands = brands.filter((brand) =>
-    selectedAlphabet === 'All' ? true : brand.startsWith(selectedAlphabet)
+  const filteredBrands = brands.filter((brand) => 
+    selectedAlphabet === 'All' ? true : brand?.startsWith(selectedAlphabet)
   );
-
+  
   const paginatedProducts = filteredProducts.slice(
     (currentPage - 1) * pageSize,
     currentPage * pageSize
@@ -110,9 +110,10 @@ const Product = ({ onCartClick }) => {
               alignSelf: 'center',
               textAlign: 'center',
               fontSize: 'clamp(3.5rem, 10vw, 4rem)',
+              color:'#1e6460'
             }}
           >
-            Our latest&nbsp;
+            All Medicines
             <Typography
               component="span"
               variant="h1"
@@ -121,8 +122,9 @@ const Product = ({ onCartClick }) => {
                 color: (theme) =>
                   theme.palette.mode === 'light' ? 'primary.main' : 'primary.light',
               }}
+              style={{color:'#1e6460'}}
             >
-              products
+              {/* Medicines */}
             </Typography>
           </Typography>
           <Typography
@@ -130,9 +132,9 @@ const Product = ({ onCartClick }) => {
             color="text.secondary"
             sx={{ alignSelf: 'center', width: { sm: '100%', md: '80%' } }}
           >
-            Explore our cutting-edge dashboard, delivering high-quality solutions
-            tailored to your needs. Elevate your experience with top-tier features
-            and services.
+            Explore our user-friendly platform, offering fast and reliable medicine delivery 
+            tailored to your health needs. Enjoy timely deliveries, seamless prescription uploads, 
+            and 24/7 support for a hassle-free experience.
           </Typography>
         </Stack>
 

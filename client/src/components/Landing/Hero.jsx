@@ -12,7 +12,7 @@ const Hero = () => {
                 <HoverBorderGradient className={"text-gray-600"}>
                     ✨ Welcome to DrCare
                 </HoverBorderGradient>
-                <h1 className="text-4xl sm:text-7xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-600 to-neutral-800 py-8 max-w-screen-lg mx-auto text-center">
+                <h1 className="text-4xl sm:text-7xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-600 to-neutral-800 py-8 max-w-screen-lg mx-auto text-center" style={{color:'#1e6460'}}>
                     Quality Medicines Direct to Your Doorstep
                 </h1>
                 <p className="text-lg text-gray-600 relative max-w-screen-md mx-auto text-center">

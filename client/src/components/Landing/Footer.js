@@ -100,9 +100,6 @@ function Copyright() {
           }}
         >
           <Box sx={{ width: { xs: '100%', sm: '60%' } }}>
-            <Typography variant="body2" fontWeight={600} gutterBottom>
-              Newsletter
-            </Typography>
             <Typography variant="body3" color="text.secondary" mb={2}>
               Your valuable review is important for our developement
             </Typography>
@@ -125,7 +122,7 @@ function Copyright() {
               onChange={(e) => setReview(e.target.value)}
               style={{ marginTop: '10px' }}
             />
-              <Button variant="contained" color="primary" sx={{ flexShrink: 0 }}  onClick={handleReviewSubmit}>
+              <Button variant="contained" color="primary" sx={{ flexShrink: 0 }}  onClick={handleReviewSubmit} style={{backgroundColor:'#1e6460'}}>
               Submit Review
               </Button>
             </Stack>

@@ -188,20 +188,20 @@ function Info({ medicineData, setMedicineData }) {
       <Typography variant="h6" gutterBottom>
         Upload Prescription / Apply for Prescription
       </Typography>
-      <Button variant="contained" component="label">
+      <Button variant="contained" component="label" style={{backgroundColor:'#1e6460'}}>
         Upload Prescription
         <input type="file" hidden onChange={handleFileChange} />
       </Button>
       {prescription && <Typography variant="body2">{prescription.name}</Typography>}
       {prescriptionUrl && (
         <div>
-          <Typography variant="body2">Uploaded Prescription:</Typography>
+          <Typography variant="body2" >Uploaded Prescription:</Typography>
           <img src={prescriptionUrl} alt="Prescription" style={{ width: '100%', marginTop: 10 }} />
         </div>
       )}
 
       <FormControlLabel
-        control={<Switch checked={noPrescription} onChange={handleToggleNoPrescription} />}
+        control={<Switch checked={noPrescription} onChange={handleToggleNoPrescription} style={{color:'#1e6460'}}/>}
         label="I don't have a prescription"
       />
       {noPrescription && <Typography variant="body2" color="error">Please note that having a prescription is recommended for proper medication guidance.</Typography>}
@@ -233,7 +233,7 @@ function Info({ medicineData, setMedicineData }) {
               onClick={() => handleRemoveRow(index)}
               sx={{ alignSelf: 'center' }}
             >
-              <DeleteIcon />
+              <DeleteIcon style={{color:'#1e6460'}}/>
             </IconButton>
           </div>
           <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -269,7 +269,7 @@ function Info({ medicineData, setMedicineData }) {
       <Button
         startIcon={<AddCircleOutlineIcon />}
         onClick={handleAddRow}
-        style={{ marginTop: 10 }}
+        style={{ marginTop: 10,color:'#1e6460' }}
       >
         Add More
       </Button>

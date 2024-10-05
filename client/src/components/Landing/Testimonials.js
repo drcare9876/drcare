@@ -129,7 +129,7 @@ export default function Testimonials() {
           textAlign: { sm: 'left', md: 'center' },
         }}
       >
-        <Typography component="h2" variant="h4" color="text.primary">
+        <Typography component="h2" variant="h4" color="#1e6460">
           Testimonials
         </Typography>
         <Typography variant="body1" color="text.secondary">

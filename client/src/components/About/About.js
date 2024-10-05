@@ -12,7 +12,7 @@ const sections = [
     image: 'https://res.cloudinary.com/dofhvhvnf/image/upload/v1719340379/Aseets/3d-human-body-parts-background_23-2151525646.jpg_aea14l-removebg-preview_zxdzjm.png',
     text: (
       <>
-        <strong>Improved Cardiovascular Health:</strong> Regular physical activity and a balanced diet can significantly reduce the risk of heart disease and stroke.
+        <strong style={{color:'#1e6460'}}>Improved Cardiovascular Health:</strong> Regular physical activity and a balanced diet can significantly reduce the risk of heart disease and stroke.
       </>
     ),
   },
@@ -20,7 +20,7 @@ const sections = [
     image: 'https://res.cloudinary.com/dofhvhvnf/image/upload/v1719340225/Aseets/isometric-clip-art-style-hospital-modern-building-images-with-ai-generated_545052-3934.jpg_mdlb51-removebg-preview_omvtec.png',
     text: (
       <>
-        <strong>Enhanced Mental Health:</strong> Exercise and proper nutrition can improve mental well-being, reduce stress, anxiety, and depression, and enhance cognitive function.
+        <strong style={{color:'#1e6460'}}>Enhanced Mental Health:</strong> Exercise and proper nutrition can improve mental well-being, reduce stress, anxiety, and depression, and enhance cognitive function.
       </>
     ),
   },
@@ -28,7 +28,7 @@ const sections = [
     image: 'https://res.cloudinary.com/dofhvhvnf/image/upload/v1719340580/Aseets/human-organs-character-composition_23-2150610255.jpg_goq6hw-removebg-preview_cabtyv.png',
     text: (
       <>
-        <strong>Strengthened Immune System:</strong> Consuming a diet rich in vitamins and minerals can boost the immune system, helping to ward off illnesses and infections.
+        <strong style={{color:'#1e6460'}}>Strengthened Immune System:</strong> Consuming a diet rich in vitamins and minerals can boost the immune system, helping to ward off illnesses and infections.
       </>
     ),
   },
@@ -40,29 +40,21 @@ const points = [
   {
     text: (
       <>
-        <strong>Better Digestive Health:</strong> A diet high in fiber, combined with adequate hydration, can improve digestion and prevent constipation.
+        <strong style={{color:'#1e6460'}}>Better Digestive Health:</strong> A diet high in fiber, combined with adequate hydration, can improve digestion and prevent constipation.
       </>
     ),
   },
   {
     text: (
       <>
-        <strong>Weight Management:</strong> Balanced nutrition and regular exercise are key to maintaining a healthy weight, reducing the risk of obesity-related conditions such as diabetes and hypertension.
+        <strong style={{color:'#1e6460'}}>Weight Management:</strong> Balanced nutrition and regular exercise are key to maintaining a healthy weight, reducing the risk of obesity-related conditions such as diabetes and hypertension.
       </>
     ),
   },
   {
     text: (
       <>
-        <strong>Bone and Joint Health:</strong> Weight-bearing exercises and a diet rich in calcium and vitamin D can strengthen bones and joints, reducing the risk of osteoporosis and arthritis.
-      </>
-    ),
-  },
-  {
-
-    text: (
-      <>
-        <strong>Improved Sleep Quality:</strong> Regular physical activity and a healthy diet can improve sleep patterns, leading to better overall health and well-being.
+        <strong style={{color:'#1e6460'}}>Bone and Joint Health:</strong> Weight-bearing exercises and a diet rich in calcium and vitamin D can strengthen bones and joints, reducing the risk of osteoporosis and arthritis.
       </>
     ),
   },
@@ -70,7 +62,7 @@ const points = [
 
     text: (
       <>
-        <strong>Enhanced Energy Levels:</strong> Proper nutrition and regular exercise can boost energy levels, improving daily productivity and overall quality of life.
+        <strong style={{color:'#1e6460'}}>Improved Sleep Quality:</strong> Regular physical activity and a healthy diet can improve sleep patterns, leading to better overall health and well-being.
       </>
     ),
   },
@@ -78,7 +70,15 @@ const points = [
 
     text: (
       <>
-        <strong>Reduced Risk of Chronic Diseases:</strong> A healthy lifestyle can lower the risk of chronic diseases such as diabetes, cancer, and metabolic syndrome.
+        <strong style={{color:'#1e6460'}}>Enhanced Energy Levels:</strong> Proper nutrition and regular exercise can boost energy levels, improving daily productivity and overall quality of life.
+      </>
+    ),
+  },
+  {
+
+    text: (
+      <>
+        <strong style={{color:'#1e6460'}}>Reduced Risk of Chronic Diseases:</strong> A healthy lifestyle can lower the risk of chronic diseases such as diabetes, cancer, and metabolic syndrome.
       </>
     ),
   },

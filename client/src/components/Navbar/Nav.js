@@ -17,8 +17,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const logoStyle = {
-  width: '58px',
-  height: '58px',
+  width: '40px',
+  height: '40px',
   cursor: 'pointer',
 };
 
@@ -98,10 +98,10 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
             >
               <img
                 src={
-                  'https://res.cloudinary.com/dofhvhvnf/image/upload/v1714030910/c484560a-6c5d-437f-a68a-6008c4dc73f2-removebg-preview_idkaij.png'
+                  'https://res.cloudinary.com/dofhvhvnf/image/upload/v1727879112/Aseets/drlogo_bwqlsn.png'
                 }
                 style={logoStyle}
-                alt="logo of sitemark"
+                alt="Dr.Care"
                 onClick={handleLogoClick}
               />
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
@@ -152,7 +152,7 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
                 Sign up
               </Button> */}
               <Badge badgeContent={cartCount} color="error" onClick={onCartClick}>
-                <ShoppingCartIcon sx={{ cursor: 'pointer', color: 'black' }} />
+                <ShoppingCartIcon sx={{ cursor: 'pointer', color: '#1e6460' }} />
               </Badge>
             </Box>
             <Box sx={{ display: { sm: '', md: 'none' } }}>
@@ -217,7 +217,7 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
                   </MenuItem> */}
                   <MenuItem>
                     <Badge badgeContent={cartCount} color="error" onClick={onCartClick}>
-                      <ShoppingCartIcon sx={{ cursor: 'pointer', color: 'black' }} />
+                      <ShoppingCartIcon sx={{ cursor: 'pointer', color: '#1e6460' }} />
                     </Badge>
                   </MenuItem>
                 </Box>

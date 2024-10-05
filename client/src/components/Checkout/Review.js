@@ -142,7 +142,7 @@ export default function Review({ formData, medicineData }) {
           </Typography>
         </div>
       </Stack>
-      <Button variant="contained" color="primary" onClick={handlePlaceOrder}>
+      <Button variant="contained" color="primary" onClick={handlePlaceOrder} style={{backgroundColor:'#1e6460'}}>
         Place Order
       </Button>
     </Stack>

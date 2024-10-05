@@ -20,21 +20,21 @@ const items = [
     title: 'We Deliver Within 24 Hours',
     description:
       'Experience the fastest medicine delivery service, ensuring you get your medications within 24 hours.',
-    videoSrc: 'https://res.cloudinary.com/dofhvhvnf/video/upload/v1719135675/Aseets/4169877-hd_1920_1080_25fps_1_tne9t1.mp4',
+    imgSrc: 'https://res.cloudinary.com/dofhvhvnf/image/upload/v1727879139/Aseets/jHDdfDUmTn6qkZ6zP4B6ng_bgeoxu.png',
   },
   {
     icon: <FreeBreakfastRoundedIcon />,
     title: 'Free Delivery',
     description:
       'Enjoy free delivery on all your medicine orders, saving you money and hassle.',
-    videoSrc: 'https://res.cloudinary.com/dofhvhvnf/video/upload/v1719135514/Aseets/7362582-hd_1920_1080_24fps_dstpxm.mp4',
+    imgSrc: 'https://res.cloudinary.com/dofhvhvnf/image/upload/v1727879140/Aseets/Picsart_24-10-02_10-24-03-283_hbpcod.jpg',
   },
   {
     icon: <DiscountRoundedIcon />,
     title: '21% Off Which No One Gives on Medicine',
     description:
       'Take advantage of our exclusive 21% discount on all medicines, a deal you won’t find anywhere else.',
-    videoSrc: 'https://res.cloudinary.com/dofhvhvnf/video/upload/v1719135748/Aseets/5644246-hd_1080_2048_25fps_uv4abp.mp4',
+    imgSrc: 'https://res.cloudinary.com/dofhvhvnf/image/upload/v1727879140/Aseets/eZtV0cZGQ86-X9oDrPlpaw_xmx4yq.jpg',
   },
 ];
 
@@ -58,7 +58,7 @@ const Features = () => {
       <Grid container spacing={6}>
         <Grid item xs={12} md={6}>
           <div>
-            <Typography component="h2" variant="h4" color="text.primary">
+            <Typography component="h2" variant="h4" color="#1e6460">
               Medicine Delivery Features
             </Typography>
             <Typography
@@ -109,11 +109,9 @@ const Features = () => {
                 minHeight: 280,
               }}
             >
-              <video
-                src={items[selectedItemIndex].videoSrc}
-                autoPlay
-                loop
-                muted
+              <img
+                src={selectedFeature.imgSrc}
+                alt={selectedFeature.title}
                 style={{
                   width: '100%',
                   height: '100%',
@@ -193,11 +191,11 @@ const Features = () => {
                       color: (theme) => {
                         if (theme.palette.mode === 'light') {
                           return selectedItemIndex === index
-                            ? 'primary.main'
+                            ? '#1e6460'
                             : 'grey.300';
                         }
                         return selectedItemIndex === index
-                          ? 'primary.main'
+                          ? '#1e6460'
                           : 'grey.700';
                       },
                     }}
@@ -220,7 +218,7 @@ const Features = () => {
                       {description}
                     </Typography>
                     <Link
-                      color="primary"
+                      color="#1e6460"
                       variant="body2"
                       fontWeight="bold"
                       sx={{
@@ -233,10 +231,11 @@ const Features = () => {
                         event.stopPropagation();
                       }}
                     >
-                      <span>Learn more</span>
+                      <span style={{color:'#1e6460'}}>Learn more</span>
                       <ChevronRightRoundedIcon
                         fontSize="small"
                         sx={{ mt: '1px', ml: '2px' }}
+                        style={{color:'#1e6460'}}
                       />
                     </Link>
                   </Box>
@@ -268,11 +267,9 @@ const Features = () => {
                 animation: `${animateImage} 3s ease-in-out infinite`,
               }}
             >
-              <video
-                src={items[selectedItemIndex].videoSrc}
-                autoPlay
-                loop
-                muted
+              <img
+                src={selectedFeature.imgSrc}
+                alt={selectedFeature.title}
                 style={{
                   width: '100%',
                   height: '100%',

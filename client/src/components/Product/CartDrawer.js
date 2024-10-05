@@ -63,6 +63,7 @@ const CartDrawer = ({ open, onClose }) => {
               navigate('/checkout');
             }}
             className='w-full'
+            style={{backgroundColor:'#1e6460'}}
           >
             Checkout
           </Button>

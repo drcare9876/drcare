@@ -12,6 +12,7 @@ import { Badge } from "../ui/badge";
 
 import ProductDetailsModal from "../Modals/ProductDetailsModal";
 import { Info, ShoppingCart } from "lucide-react";
+import { color } from "framer-motion";
 
 export const ProductCard = ({ product, handleAddToCart }) => {
     const { name, mrp, brand, image, description, addToCart, tags } = product;
@@ -64,14 +65,14 @@ export const ProductCard = ({ product, handleAddToCart }) => {
             <CardFooter className="flex justify-between my-2"></CardFooter>
             <CardFooter className="flex justify-between">
                 <div className="flex gap-1 items-center">
-                    <h3 className="text-2xl font-semibold text-primary">
+                    <h3 className="text-2xl font-semibold text-primary" style={{color:'#1e6460'}}>
                         ₹{discountedPrice}
                     </h3>
                     <h5 className="text-base font-semibold text-gray-500 line-through">
                         ₹{mrp}
                     </h5>
                 </div>
-                <Button variant="default" size="sm" onClick={handleAddToCart}>
+                <Button variant="default" size="sm" onClick={handleAddToCart} style={{backgroundColor:'#1e6460'}}>
                     <ShoppingCart className="size-4 mr-1" />
                     Add to cart
                 </Button>

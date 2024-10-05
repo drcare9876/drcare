@@ -32,7 +32,7 @@ const Location=()=> {
         allowFullScreen>
       </iframe>
       <div style={addressStyle}>
-        <strong>Visit Us:</strong><br />
+        <strong style={{color:'#1e6460'}}>Visit Us:</strong><br />
         262, Netaji Subhash Rd., Rabisandhalai, Chakra Beriya, Shibpur, Howrah, West Bengal 711104
       </div>
     </div>

@@ -31,7 +31,7 @@ const itemStyle = {
 const h3Style = {
   fontSize: '24px',
   margin: '0',
-  color: 'black',
+  color: '#1e6460',
   fontWeight: 'bold'
 };
 
@@ -47,7 +47,7 @@ const StatsComponent = () => {
       <div style={itemStyle}>
         <ZoomImage src="https://res.cloudinary.com/dofhvhvnf/image/upload/v1719040220/Aseets/store_voo2mo.png" alt="Offline Stores" />
         <div>
-          <Typography component="h2" variant="h4" style={h3Style}><CountUp start={0} end={1000} duration={5} />+</Typography>
+          <Typography component="h2" variant="h4" style={h3Style}><CountUp start={0} end={10} duration={5} />+</Typography>
           <Typography style={pStyle}>Offline Stores</Typography>
         </div>
       </div>
@@ -55,7 +55,7 @@ const StatsComponent = () => {
         <ZoomImage src="https://res.cloudinary.com/dofhvhvnf/image/upload/v1719040234/Aseets/location_doru0c.png" alt="Pincodes Served" />
         <div>
           <Typography component="h2" variant="h4" style={h3Style}>
-            <CountUp start={0} end={5000} duration={5} />+
+            <CountUp start={0} end={100} duration={5} />+
           </Typography>
           <Typography style={pStyle}>Pincodes Served</Typography>
         </div>
@@ -63,7 +63,7 @@ const StatsComponent = () => {
       <div style={itemStyle}>
         <ZoomImage src="https://res.cloudinary.com/dofhvhvnf/image/upload/v1719040240/Aseets/user_mzqnny.png" alt="Happy Customers" />
         <div>
-          <Typography component="h2" variant="h4" style={h3Style}><CountUp start={0} end={1000} duration={5} />+</Typography>
+          <Typography component="h2" variant="h4" style={h3Style}><CountUp start={0} end={200} duration={5} />+</Typography>
           <Typography style={pStyle}>Happy Customers</Typography>
         </div>
       </div>
