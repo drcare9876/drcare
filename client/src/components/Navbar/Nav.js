@@ -98,7 +98,7 @@ const Nav = ({ mode, toggleColorMode, onCartClick }) => {
             >
               <img
                 src={
-                  'https://res.cloudinary.com/dofhvhvnf/image/upload/v1727879112/Aseets/drlogo_bwqlsn.png'
+                  'https://res.cloudinary.com/dofhvhvnf/image/upload/v1728107310/Aseets/drlogo-removebg-preview_m95rx5.png'
                 }
                 style={logoStyle}
                 alt="Dr.Care"

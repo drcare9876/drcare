@@ -148,7 +148,7 @@ const Product = ({ onCartClick }) => {
           </section>
         ) : (
           <>
-            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, mt: 4, mb: 2 }}>
+            {/* <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, mt: 4, mb: 2 }}>
               <TextField
                 select
                 label="Tag"
@@ -190,7 +190,7 @@ const Product = ({ onCartClick }) => {
                   </MenuItem>
                 ))}
               </TextField>
-            </Box>
+            </Box> */}
 
 
             <Box sx={{ mt: 2, mb: 4, width: '100%', display: 'flex', justifyContent: 'center' }}>
