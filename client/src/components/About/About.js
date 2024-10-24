@@ -9,7 +9,7 @@ import { Hero } from './Hero';
 
 const sections = [
   {
-    image: 'https://res.cloudinary.com/dofhvhvnf/image/upload/v1719340379/Aseets/3d-human-body-parts-background_23-2151525646.jpg_aea14l-removebg-preview_zxdzjm.png',
+    image: 'https://res.cloudinary.com/dofhvhvnf/image/upload/v1729775594/MEDICINE_rhqafz.jpg',
     text: (
       <>
         <strong style={{color:'#1e6460'}}>Improved Cardiovascular Health:</strong> Regular physical activity and a balanced diet can significantly reduce the risk of heart disease and stroke.
@@ -17,7 +17,7 @@ const sections = [
     ),
   },
   {
-    image: 'https://res.cloudinary.com/dofhvhvnf/image/upload/v1719340225/Aseets/isometric-clip-art-style-hospital-modern-building-images-with-ai-generated_545052-3934.jpg_mdlb51-removebg-preview_omvtec.png',
+    image: 'https://res.cloudinary.com/dofhvhvnf/image/upload/v1729775595/HOSPITAL_fcnick.jpg',
     text: (
       <>
         <strong style={{color:'#1e6460'}}>Enhanced Mental Health:</strong> Exercise and proper nutrition can improve mental well-being, reduce stress, anxiety, and depression, and enhance cognitive function.
@@ -25,7 +25,7 @@ const sections = [
     ),
   },
   {
-    image: 'https://res.cloudinary.com/dofhvhvnf/image/upload/v1719340580/Aseets/human-organs-character-composition_23-2150610255.jpg_goq6hw-removebg-preview_cabtyv.png',
+    image: 'https://res.cloudinary.com/dofhvhvnf/image/upload/v1729775594/HEART_fz0gga.jpg',
     text: (
       <>
         <strong style={{color:'#1e6460'}}>Strengthened Immune System:</strong> Consuming a diet rich in vitamins and minerals can boost the immune system, helping to ward off illnesses and infections.
