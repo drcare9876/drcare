@@ -95,10 +95,6 @@ const generateItemsHtml = (items) => {
     return items.map(item => `
         <tr>
             <td style="border-bottom: 1px solid #ddd; padding: 8px;">${item.name}</td>
-            <td style="border-bottom: 1px solid #ddd; padding: 8px;">
-                <img src="${item.image ? item.image : 'https://res.cloudinary.com/dofhvhvnf/image/upload/v1724177706/tablets_tcz3mk.jpg'}" alt="${item.name}" style="width: 50px; height: 50px; object-fit: cover;" />
-            </td>
-            <td style="border-bottom: 1px solid #ddd; padding: 8px;">${item.price ? `₹${item.price}` : '---'}</td>
             <td style="border-bottom: 1px solid #ddd; padding: 8px;">${item.quantity}</td>
         </tr>
     `).join('');
