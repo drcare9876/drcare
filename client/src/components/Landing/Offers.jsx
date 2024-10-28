@@ -3,9 +3,9 @@ import { Paper } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 
 const dummyImages = [
-    { src: "/image-1.jpg", alt: "Image 1" },
-    { src: "/image-2.jpg", alt: "Image 2" },
-    { src: "/image-3.jpg", alt: "Image 3" },
+    { src: "/banner-1.webp", alt: "banner 1" },
+    { src: "/banner-1.webp", alt: "banner 2" },
+    { src: "/banner-1.webp", alt: "banner 3" },
 ];
 const Offers = () => {
     return (
