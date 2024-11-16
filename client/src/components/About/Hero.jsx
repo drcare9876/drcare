@@ -11,13 +11,15 @@ export function Hero() {
             <HoverBorderGradient className={"text-gray-600"}>
                 ✨ About Us
             </HoverBorderGradient>
-            <h1 className="text-4xl sm:text-7xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-600 to-neutral-800 py-8 max-w-screen-lg mx-auto text-center" style={{color:'#1e6460'}}>
-                Your Trusted Medicine Delivery Service
+            <h1 className="text-4xl text-[#1e6460] sm:text-7xl font-bold relative bg-clip-text text-transparent bg-gradient-to-b from-neutral-600 to-neutral-800 py-8 max-w-screen-lg text-center">
+                Your Free Medicine's Delivery Partner
             </h1>
             <p className="text-lg text-gray-600 relative max-w-screen-md mx-auto text-center">
-                We are here to deliver your health care needs with a reliable,
-                professional, and efficient delivery service at your doorsteps
-                in the comfort of your home and office
+                At Dr. Care, we are committed to providing accessible healthcare
+                by delivering medicines directly to your doorstep — completely
+                free of charge. Our mission is to make sure that no one has to
+                worry about how to get their medication, ensuring that
+                healthcare reaches every home, wherever it&apos;s needed.
             </p>
             <NavLink className="hover-button my-6" to={"/product"}>
                 Browse Products
