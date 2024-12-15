@@ -13,6 +13,9 @@ import Pagination from '@mui/material/Pagination';
 import { ProductCard } from './ProductCard.jsx';
 import { useCart } from '../Context/CartContext';
 import './Card.css';
+import { Button } from '../ui/button.jsx';
+import { Info } from 'lucide-react';
+import { cn } from '../../lib/utils.js';
 
 const alphabets = ['All', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 const pageSize = 30; // 4 rows with 4 columns each
@@ -26,6 +29,7 @@ const Product = ({ onCartClick }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [showVideo, setshowVideo] = useState(false);
 
   const MySwal = withReactContent(Swal);
 
@@ -64,10 +68,10 @@ const Product = ({ onCartClick }) => {
     return matchesTag && matchesAlphabet && matchesBrand && matchesSearch;
   });
 
-  const filteredBrands = brands.filter((brand) => 
+  const filteredBrands = brands.filter((brand) =>
     selectedAlphabet === 'All' ? true : brand?.startsWith(selectedAlphabet)
   );
-  
+
   const paginatedProducts = filteredProducts.slice(
     (currentPage - 1) * pageSize,
     currentPage * pageSize
@@ -77,6 +81,10 @@ const Product = ({ onCartClick }) => {
 
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
+  };
+
+  const handleVideoPreview = () => {
+    setshowVideo((prev) => !prev);
   };
 
   return (
@@ -110,7 +118,7 @@ const Product = ({ onCartClick }) => {
               alignSelf: 'center',
               textAlign: 'center',
               fontSize: 'clamp(3.5rem, 10vw, 4rem)',
-              color:'#1e6460'
+              color: '#1e6460'
             }}
           >
             All Medicines
@@ -122,7 +130,7 @@ const Product = ({ onCartClick }) => {
                 color: (theme) =>
                   theme.palette.mode === 'light' ? 'primary.main' : 'primary.light',
               }}
-              style={{color:'#1e6460'}}
+              style={{ color: '#1e6460' }}
             >
               {/* Medicines */}
             </Typography>
@@ -132,8 +140,8 @@ const Product = ({ onCartClick }) => {
             color="text.secondary"
             sx={{ alignSelf: 'center', width: { sm: '100%', md: '80%' } }}
           >
-            Explore our user-friendly platform, offering fast and reliable medicine delivery 
-            tailored to your health needs. Enjoy timely deliveries, seamless prescription uploads, 
+            Explore our user-friendly platform, offering fast and reliable medicine delivery
+            tailored to your health needs. Enjoy timely deliveries, seamless prescription uploads,
             and 24/7 support for a hassle-free experience.
           </Typography>
         </Stack>
@@ -193,13 +201,17 @@ const Product = ({ onCartClick }) => {
             </Box> */}
 
 
-            <Box sx={{ mt: 2, mb: 4, width: '100%', display: 'flex', justifyContent: 'center' }}>
+            <Box sx={{ mt: 2, mb: 4, width: '100%', display: 'flex', justifyContent: 'center' }} className="gap-2">
               <TextField
                 label="Search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 sx={{ minWidth: '65%' }}
               />
+              <Button size={"icon"} className="size-14" onClick={handleVideoPreview}><Info /></Button>
+              <iframe
+                className={cn('fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden', showVideo && 'block')}
+                width="560" height="315" src="https://www.youtube.com/embed/iohqiGMR2MQ?si=efg44e3ZqMZaPgEZ&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </Box>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
