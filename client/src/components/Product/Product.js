@@ -13,7 +13,6 @@ import Pagination from '@mui/material/Pagination';
 import { ProductCard } from './ProductCard.jsx';
 import { useCart } from '../Context/CartContext';
 import './Card.css';
-import { cn } from '../../lib/utils.js';
 import { VideoDialog } from './Video.jsx';
 
 const alphabets = ['All', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
@@ -28,7 +27,6 @@ const Product = ({ onCartClick }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
-  const [showVideo, setshowVideo] = useState(false);
 
   const MySwal = withReactContent(Swal);
 
@@ -80,10 +78,6 @@ const Product = ({ onCartClick }) => {
 
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
-  };
-
-  const handleVideoPreview = () => {
-    setshowVideo((prev) => !prev);
   };
 
   return (
