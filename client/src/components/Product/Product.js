@@ -13,9 +13,8 @@ import Pagination from '@mui/material/Pagination';
 import { ProductCard } from './ProductCard.jsx';
 import { useCart } from '../Context/CartContext';
 import './Card.css';
-import { Button } from '../ui/button.jsx';
-import { Info } from 'lucide-react';
 import { cn } from '../../lib/utils.js';
+import { VideoDialog } from './Video.jsx';
 
 const alphabets = ['All', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 const pageSize = 30; // 4 rows with 4 columns each
@@ -208,10 +207,8 @@ const Product = ({ onCartClick }) => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 sx={{ minWidth: '65%' }}
               />
-              <Button size={"icon"} className="size-14" onClick={handleVideoPreview}><Info /></Button>
-              <iframe
-                className={cn('fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden', showVideo && 'block')}
-                width="560" height="315" src="https://www.youtube.com/embed/iohqiGMR2MQ?si=efg44e3ZqMZaPgEZ&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              <VideoDialog />
+
             </Box>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
