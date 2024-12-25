@@ -26,14 +26,15 @@ const Product = ({ onCartClick }) => {
   const MySwal = withReactContent(Swal);
 
   const API_HOST = 'https://drcare-iip8.onrender.com';
+  const LOCAL_HOST='http://localhost:4000'
 
   const fetchProducts = async (page) => {
     setLoading(true);
     try {
       const response = await fetch(`${API_HOST}/api/v1/getMedicine/${page}`);
       const data = await response.json();
-      setProducts(data.data); // Assuming the API response has a "data" field
-      setTotalPages(data.meta.totalPages); // Assuming the API response has a "meta" object
+      setProducts(data.data);  
+      setTotalPages(data.meta.totalPages);  
     } catch (error) {
       console.error('Error fetching products:', error);
     } finally {

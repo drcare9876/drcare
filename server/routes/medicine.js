@@ -4,6 +4,7 @@ const medicineController = require('../controllers/medicine');
 
 // Define a GET route to fetch all medicines
 router.get('/getMedicine/:page', medicineController.getPaginatedMedicines);
+router.get('/getTags', medicineController.getAllTags);
 
 
 // Define a POST route to add a new medicine

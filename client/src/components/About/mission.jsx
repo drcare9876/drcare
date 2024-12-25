@@ -12,7 +12,7 @@ export const Mission = () => {
                 <MissionCard
                     title={"Free Delivery, Every Time"}
                     desc={
-                        " We believe that access to medicine should never be a burden. That's why we offer free delivery of medicines to your home, so you can focus on your health without worrying about additional costs."
+                        "We believe that access to medicine should never be a burden. That's why we offer free delivery of medicines to your home, so you can focus on your health without worrying about additional costs."
                     }
                     Icon={Truck}
                 />

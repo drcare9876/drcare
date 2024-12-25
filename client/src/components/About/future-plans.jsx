@@ -1,10 +1,11 @@
 import React from "react";
 import { FuturePlansCard } from "./future-plans-card";
+import { Card, CardHeader, CardTitle, CardDescription } from "../ui/card";
 
 const FUTURE_PLANS = [
     {
         title: "Nationwide Reach",
-        desc: "We aim to supply medicines to every home in India, ensuring that no one is left behind when it comes to their health. Our goal is to make healthcare accessible to everyone, regardless of their location.",
+        desc: "We aim to supply medicines to every home in India, ensuring that no one is left behind when it comes to their health.",
         image: "https://res.cloudinary.com/dofhvhvnf/image/upload/v1729775594/MEDICINE_rhqafz.jpg",
     },
     {
@@ -14,7 +15,7 @@ const FUTURE_PLANS = [
     },
     {
         title: "Reducing Medicine Prices",
-        desc: "We're focused on driving down the cost of medicines, so you don't have to worry about the financial burden of your health. Our goal is to make healthcare more accessible and affordable for everyone.",
+        desc: "We're focused on driving down the cost of medicines, so you don't have to worry about the financial burden of your health.",
         image: "https://res.cloudinary.com/dofhvhvnf/image/upload/v1729775594/HEART_fz0gga.jpg",
     },
     {
@@ -35,6 +36,10 @@ export const FuturePlans = () => {
                     <FuturePlansCard key={idx} {...item} />
                 ))}
             </div>
+                            <CardTitle className="text-[#1e6460] text-xl font-bold">
+                            At Dr. Care, we are not just a pharmacy—we are your health partner, dedicated to making healthcare simple, affordable, and accessible for everyone. Thank you for trusting us with your health.
+                            </CardTitle>
+            
         </section>
     );
 };
