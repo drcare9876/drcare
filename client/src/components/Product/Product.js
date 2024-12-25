@@ -25,7 +25,7 @@ const Product = ({ onCartClick }) => {
 
   const MySwal = withReactContent(Swal);
 
-  const API_HOST = 'http://localhost:4000';
+  const API_HOST = 'https://drcare-iip8.onrender.com';
 
   const fetchProducts = async (page) => {
     setLoading(true);
