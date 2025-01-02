@@ -2,46 +2,23 @@ const Medicine = require('../models/Medicine');
 
 exports.getPaginatedMedicines = async (req, res) => {
   try {
-    // Tags to shuffle medicines under
-    const tags = [
-      "Health Conditions",
-      "All Medicine",
-      "Baby Care",
-      "Condoms",
-      "Diabetic Care",
-      "First Aid",
-      "Kneecap",
-      "Women's Care"
-    ];
-
     const page = parseInt(req.params.page) || 1; // Default to page 1 if not provided
     const limit = 12; // Fixed limit of 12 items per page
 
-    // Fetch medicines grouped by tags
-    const medicinesByTag = {};
-    for (const tag of tags) {
-      medicinesByTag[tag] = await Medicine.find({ tags: tag }).limit(limit);
-    }
+    // Calculate the number of items to skip for the current page
+    const skip = (page - 1) * limit;
 
-    // Shuffle and interleave medicines
-    const interleavedMedicines = [];
-    let index = 0;
-    while (interleavedMedicines.length < limit) {
-      for (const tag of tags) {
-        if (medicinesByTag[tag][index]) {
-          interleavedMedicines.push(medicinesByTag[tag][index]);
-        }
-        if (interleavedMedicines.length >= limit) break; // Stop when the page limit is reached
-      }
-      index++;
-    }
+    // Fetch paginated medicines
+    const medicines = await Medicine.find()
+      .skip(skip)
+      .limit(limit);
 
     // Get total count for pagination metadata
     const totalMedicines = await Medicine.countDocuments();
 
     // Respond with medicines and pagination metadata
     res.status(200).json({
-      data: interleavedMedicines,
+      data: medicines,
       meta: {
         totalItems: totalMedicines,
         currentPage: page,
@@ -53,7 +30,6 @@ exports.getPaginatedMedicines = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
 
 // POST request handler to add a new medicine
 exports.addMedicine = async (req, res) => {
