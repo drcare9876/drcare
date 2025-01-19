@@ -23,7 +23,7 @@ const items = [
     icon: <DiscountRoundedIcon />,
     title: 'Exclusive Discounts',
     description:
-      'Enjoy exclusive discounts up to 21% on your medicine purchases, saving you more.',
+      'Enjoy exclusive discounts (Flat 21% discount) on your medicine purchases, saving you more.',
   },
   {
     icon: <HealthAndSafetyRoundedIcon />,
