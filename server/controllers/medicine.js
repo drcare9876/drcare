@@ -4,17 +4,23 @@ exports.getPaginatedMedicines = async (req, res) => {
   try {
     const page = parseInt(req.params.page) || 1; // Default to page 1 if not provided
     const limit = 12; // Fixed limit of 12 items per page
+    const searchQuery = req.query.search || ''; // Get search query from request
 
     // Calculate the number of items to skip for the current page
     const skip = (page - 1) * limit;
 
-    // Fetch paginated medicines
-    const medicines = await Medicine.find()
+    // Build the search filter
+    const filter = searchQuery
+      ? { name: { $regex: searchQuery, $options: 'i' } } // Case-insensitive regex
+      : {};
+
+    // Fetch paginated medicines with search filter
+    const medicines = await Medicine.find(filter)
       .skip(skip)
       .limit(limit);
 
     // Get total count for pagination metadata
-    const totalMedicines = await Medicine.countDocuments();
+    const totalMedicines = await Medicine.countDocuments(filter);
 
     // Respond with medicines and pagination metadata
     res.status(200).json({
@@ -30,6 +36,7 @@ exports.getPaginatedMedicines = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
 
 // POST request handler to add a new medicine
 exports.addMedicine = async (req, res) => {

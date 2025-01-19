@@ -9,13 +9,14 @@ import {
 } from "../ui/card";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
-
+import Skeleton from "@mui/material/Skeleton"; // Import MUI Skeleton
 import ProductDetailsModal from "../Modals/ProductDetailsModal";
 import { Info, ShoppingCart } from "lucide-react";
 
 export const ProductCard = ({ product, handleAddToCart }) => {
-    const { name, mrp, brand, image, description, addToCart, tags } = product;
+    const { name, mrp, brand, image, description, tags } = product;
     const [modalOpen, setModalOpen] = useState(false);
+    const [imageLoaded, setImageLoaded] = useState(false); // Track image load status
     const discountedPrice = (mrp * 0.79).toFixed(2); // Reducing 21% from MRP
 
     const handleModalOpen = () => setModalOpen(true);
@@ -29,8 +30,9 @@ export const ProductCard = ({ product, handleAddToCart }) => {
         description,
         tags,
     };
+
     return (
-        <Card className=" w-full md:w-[300px] border outline-none shadow-md rounded-md p-4">
+        <Card className="w-full md:w-[300px] border outline-none shadow-md rounded-md p-4">
             <CardHeader className="flex justify-between mb-2">
                 <Badge
                     variant={"outline"}
@@ -43,16 +45,32 @@ export const ProductCard = ({ product, handleAddToCart }) => {
                 <Button
                     variant="outline"
                     size="icon"
-                    className=" size-8"
+                    className="size-8"
                     onClick={handleModalOpen}
                 >
                     <Info className="size-4" />
                 </Button>
             </CardHeader>
             <CardContent className="h-48 w-full object-cover overflow-hidden rounded-md">
+                {/* Show Skeleton while the image is loading */}
+                {!imageLoaded && (
+                    <Skeleton
+                        variant="rectangular"
+                        width="100%"
+                        height="100%"
+                        animation="wave"
+                        className="rounded-md"
+                    />
+                )}
                 <img
                     src={image}
-                    className="h-full w-full object-cover rounded-md"
+                    className={`h-full w-full object-cover rounded-md ${
+                        imageLoaded ? "block" : "hidden"
+                    }`}
+                    alt={name}
+                    loading="lazy"
+                    onLoad={() => setImageLoaded(true)} // Update state when image loads
+                    onError={() => setImageLoaded(true)} // Handle error case
                 />
             </CardContent>
             <CardHeader className="flex flex-col justify-between my-2">
