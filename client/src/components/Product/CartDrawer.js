@@ -7,7 +7,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { useNavigate } from 'react-router-dom';
 
 const CartDrawer = ({ open, onClose }) => {
-  const { cart, cartCount, totalAmount, removeFromCart, updateQuantity } = useCart();
+  const { cart, totalAmount, removeFromCart, updateQuantity } = useCart();
   const navigate = useNavigate();
 
   const handleQuantityChange = (product, quantity) => {
@@ -26,8 +26,6 @@ const CartDrawer = ({ open, onClose }) => {
           </Typography>
         </ListItem>
         {cart.map((item) => (
-          console.log(item),
-
           <ListItem key={item._id} className='flex items-center justify-start gap-2 h-max'>
             <img src={item.image} alt={item.name} className='w-12 h-auto object-cover' />
             <div>
@@ -63,7 +61,7 @@ const CartDrawer = ({ open, onClose }) => {
               navigate('/checkout');
             }}
             className='w-full'
-            style={{backgroundColor:'#1e6460'}}
+            style={{ backgroundColor: '#1e6460' }}
           >
             Checkout
           </Button>

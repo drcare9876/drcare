@@ -1,6 +1,5 @@
 import React from "react";
 import { FuturePlansCard } from "./future-plans-card";
-import { Card, CardHeader, CardTitle, CardDescription } from "../ui/card";
 
 const FUTURE_PLANS = [
     {
@@ -36,10 +35,12 @@ export const FuturePlans = () => {
                     <FuturePlansCard key={idx} {...item} />
                 ))}
             </div>
-                            <CardTitle className="text-[#1e6460] text-xl font-bold">
-                            At Dr. Care, we are not just a pharmacy—we are your health partner, dedicated to making healthcare simple, affordable, and accessible for everyone. Thank you for trusting us with your health.
-                            </CardTitle>
-            
+            <p className="text-[#1e6460] text-xl font-bold">
+                At Dr. Care, we are not just a pharmacy—we are your health
+                partner, dedicated to making healthcare simple, affordable, and
+                accessible for everyone. Thank you for trusting us with your
+                health.
+            </p>
         </section>
     );
 };

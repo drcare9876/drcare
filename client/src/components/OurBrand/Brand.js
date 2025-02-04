@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { alpha } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
- 
 
 const Brand = () => {
- 
-
   return (
     <Box
       id="hero"
@@ -29,9 +26,9 @@ const Brand = () => {
           pt: { xs: 14, sm: 20 },
           pb: { xs: 8, sm: 12 },
         }}
-      >    
+      >
         <Grid container spacing={2} justifyContent="center">
-       
+
         </Grid>
       </Container>
     </Box>

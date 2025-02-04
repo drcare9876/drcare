@@ -2,14 +2,10 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Stepper from '@mui/material/Stepper';
-import Typography from '@mui/material/Typography';
 
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
@@ -17,13 +13,11 @@ import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
 
 import AddressForm from './AddressForm';
 import Info from './Info';
-import InfoMobile from './InfoMobile';
 import Review from './Review';
-import Footer from '../Landing/Footer';
 import { useCart } from '../Context/CartContext';
 
-import { toast, ToastContainer,Bounce } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; 
+import { toast, ToastContainer, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const steps = ['Shipping address', 'Review your order'];
 

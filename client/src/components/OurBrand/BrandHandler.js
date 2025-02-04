@@ -1,17 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import Nav from "../Navbar/Nav";
 import Footer from "../Landing/Footer";
 import Brand from "./Brand";
- 
- 
 
 const BrandHandler = () => {
- 
-
   return (
     <>
-      <Nav  />
-      <Brand  />
+      <Nav />
+      <Brand />
       <Footer />
     </>
   );

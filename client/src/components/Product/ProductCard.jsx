@@ -21,6 +21,7 @@ export const ProductCard = ({ product, handleAddToCart }) => {
 
     const handleModalOpen = () => setModalOpen(true);
     const handleModalClose = () => setModalOpen(false);
+    console.log("Image: ", image);
 
     const productDetails = {
         name,
@@ -64,9 +65,7 @@ export const ProductCard = ({ product, handleAddToCart }) => {
                 )}
                 <img
                     src={image}
-                    className={`h-full w-full object-cover rounded-md ${
-                        imageLoaded ? "block" : "hidden"
-                    }`}
+                    className={`h-full w-full object-cover rounded-md `}
                     alt={name}
                     loading="lazy"
                     onLoad={() => setImageLoaded(true)} // Update state when image loads

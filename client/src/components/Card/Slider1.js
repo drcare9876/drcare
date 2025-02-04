@@ -13,7 +13,7 @@ import { EffectCube, Pagination } from "swiper/modules";
 export default function Slider1() {
   return (
     <>
-          <Swiper
+      <Swiper
         effect={"cube"}
         grabCursor={true}
         cubeEffect={{
@@ -27,13 +27,13 @@ export default function Slider1() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src="https://res.cloudinary.com/dofhvhvnf/image/upload/v1729775833/HEART_1_l3p0jl.jpg" />
+          <img src="https://res.cloudinary.com/dofhvhvnf/image/upload/v1729775833/HEART_1_l3p0jl.jpg" alt='' />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://res.cloudinary.com/dofhvhvnf/image/upload/v1729775833/DOCTOR_hxgmm9.png" />
+          <img src="https://res.cloudinary.com/dofhvhvnf/image/upload/v1729775833/DOCTOR_hxgmm9.png" alt='' />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://res.cloudinary.com/dofhvhvnf/image/upload/v1729775594/HEART_fz0gga.jpg" />
+          <img src="https://res.cloudinary.com/dofhvhvnf/image/upload/v1729775594/HEART_fz0gga.jpg" alt='' />
         </SwiperSlide>
       </Swiper>
     </>

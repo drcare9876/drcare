@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
 import { alpha } from "@mui/material";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -13,8 +11,6 @@ import { useCart } from "../Context/CartContext";
 import "./Card.css";
 import { VideoDialog } from "./Video.jsx";
 
-const pageSize = 12;  
-
 const Product = ({ onCartClick }) => {
   const { addToCart } = useCart();
   const [products, setProducts] = useState([]);
@@ -23,10 +19,8 @@ const Product = ({ onCartClick }) => {
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
 
-  const MySwal = withReactContent(Swal);
 
   const API_HOST = "https://drcare-iip8.onrender.com";
-  const LOCAL_HOST = "http://localhost:4000";
 
   const fetchProducts = async (page, query = "") => {
     setLoading(true);

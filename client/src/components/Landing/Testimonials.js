@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import { useTheme, keyframes } from '@mui/system';
+import { keyframes } from '@mui/system';
 import StarIcon from '@mui/icons-material/Star';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
@@ -108,7 +108,6 @@ const stringAvatar = (name) => {
 };
 
 export default function Testimonials() {
-  const theme = useTheme();
 
   return (
     <Container
