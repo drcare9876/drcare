@@ -3,6 +3,7 @@ const UserData = require('../models/userData');
 exports.createUser = async (req, res) => {
   try {
     const { name, phone, email, pincode } = req.body;
+    console.log(req.body);
 
     if (!name || !phone || !email || !pincode) {
       return res.status(400).json({ message: 'All fields are required' });

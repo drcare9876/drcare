@@ -21,6 +21,7 @@ const Product = ({ onCartClick }) => {
 
 
   const API_HOST = "https://drcare-iip8.onrender.com";
+  const LOCAL_HOST="http://localhost:4000";
 
   const fetchProducts = async (page, query = "") => {
     setLoading(true);

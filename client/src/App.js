@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { CartProvider } from './components/Context/CartContext'; // Import the CartProvider
 import Landing from './components/Landing/Landing';
@@ -14,8 +14,20 @@ import CanopyForm from './components/Canopy/CanopyForm';
 import CanopyData from './components/Canopy/CanopyData';
 import Signin from './components/Auth/Signin';
 import Signup from './components/Auth/SignUp';
+import Preloader from './Preloader';
 
 const App = () => {
+  const [loading, setLoading] = useState(true);
+
+  const handleFinishPreloading = () => {
+    setLoading(false);
+  };
+
+  if (loading) {
+    return <Preloader onFinish={handleFinishPreloading} />;
+  }
+
+
   return (
     <CartProvider>
       <BrowserRouter>
